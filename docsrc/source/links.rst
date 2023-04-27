@@ -1,17 +1,17 @@
-===================
-Helpful Links
-===================
+###################
+1. Helpful Links
+###################
 
-************************
-Resources for Archivists
-************************
+*****************************
+1.1. Resources for Archivists
+*****************************
 `ffmprovisr <http://amiaopensource.github.io/ffmprovisr/>`_
 
 `FFmpeg Cookbook for Archivists <https://avpres.net/FFmpeg/>`_
 
-************************
-ffmpeg.org Links
-************************
+*****************************
+1.2. ffmpeg.org Links
+*****************************
 `Manual <https://ffmpeg.org/ffmpeg.html>`_
 
 `Main Documentation Page <http://www.ffmpeg.org/documentation.html>`_

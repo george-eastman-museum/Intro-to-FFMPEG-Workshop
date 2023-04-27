@@ -11,6 +11,7 @@ Intro to FFMPEG Class Documentation
    :caption: Contents:
    
    links
+   command_line_basics
    installation
 
 
