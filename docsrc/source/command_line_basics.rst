@@ -59,7 +59,7 @@ text
 text
 
 **************************
-2.4. Linking Commands
+2.4. Combining Commands
 **************************
 
 
