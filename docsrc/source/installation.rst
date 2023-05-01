@@ -74,17 +74,43 @@ There are several options for installing FFmpeg on Mac computers
 
 3.2.2. Option 2:
 =================
-- Download the Static Build for Macs from the `FFmpeg website <https://ffmpeg.org/download.html#build-mac>`_.
+- Follow the Static Build Download link from the `FFmpeg website <https://ffmpeg.org/download.html#build-mac>`_.
 
-- Extract the files in the downloaded folder.
+- This will take you to a new page where you can download FFmpeg, FFprobe, and FFplay separately.
 
-- Put the files in an easy to find folder (for example, /Users/test/local).
+- FFmpeg recommends downloading the latest snapshots over the releases, so click the green button on the left with the a long name that looks something like: "ffmpeg-110422-g7b2851b290.7z".
 
-- Open a Terminal window and add the directory to the PATH variable (REPLACE THE PATH WITH THE FULL PATH TO THE FOLDER YOU PUT FFmpeg IN)
+- Scroll down and repeat this for the FFplay and FFprobe download links on the page as well.
+
+- Once all the files have finished downloading, navigate to your Downloads folder and extract each of the ".7z" files by double clicking them.
+
+- You should now have an "ffmpeg", "ffprobe", and "ffplay" file in your downloads folder. You can drag and drop these files in a command line window as is to run them, but if we want them to be easily accessible on the command line you'll need to add them to your $PATH.
+
+- The folder /usr/local/bin/ should already be on your $PATH, so we're going to move them there (you can check by opening a Terminal window and running the command `echo $PATH`).
+
+- Open a new Terminal window and run the following command to change directories to your Downloads folder where the "ffmpeg", "ffprobe", and "ffplay" files are located.
 
 .. code-block:: bash
 
-   $ export PATH=$PATH:/Users/test/local
+   % cd ~/Downloads/
+
+- At this point, you can verify that you're in the right location by running the `ls` command. When trying to run the command, you may get a prompt asking if you want to allow Terminal to access your downloads folder. Select "Yes" and the command will run. You should see the FFmpeg files that you downloaded and extracted listed in the output if you are in the right location.
+
+- Now that you are sure you are in the right directory, it's time to make the folder "/usr/local/bin" so that we'll be able to move our files there. Run the following command:
+
+.. code-block:: bash
+
+   % sudo mkdir -p /usr/local/bin/
+
+- You will be prompted for your password and should not see any additional messages if the command ran successfully.
+
+- Now that the folder has been created, we simply need to copy our files there. Run the following commands:
+
+.. code-block:: bash
+
+   % sudo cp ./ffmpeg /usr/local/bin
+   % sudo cp ./ffprobe /usr/local/bin
+   % sudo cp ./ffplay /usr/local/bin
 
 ************
 3.3. Linux
