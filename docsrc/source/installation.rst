@@ -61,6 +61,8 @@ In order for FFmpeg to be easily callable by simply typing ``ffmpeg`` into the c
 
 .. image:: images/windows_install4.png
 
+- To verify that the installation works, continue on to section 4.
+
 ************
 3.2. Mac
 ************
@@ -86,7 +88,7 @@ There are several options for installing FFmpeg on Mac computers
 
 - You should now have an "ffmpeg", "ffprobe", and "ffplay" file in your downloads folder. You can drag and drop these files in a command line window as is to run them, but if we want them to be easily accessible on the command line you'll need to add them to your $PATH.
 
-- The folder /usr/local/bin/ should already be on your $PATH, so we're going to move them there (you can check by opening a Terminal window and running the command `echo $PATH`).
+- The folder /usr/local/bin/ should already be on your $PATH, so we're going to move them there (you can check by opening a Terminal window and running the command ``echo $PATH``).
 
 - Open a new Terminal window and run the following command to change directories to your Downloads folder where the "ffmpeg", "ffprobe", and "ffplay" files are located.
 
@@ -94,7 +96,7 @@ There are several options for installing FFmpeg on Mac computers
 
    % cd ~/Downloads/
 
-- At this point, you can verify that you're in the right location by running the `ls` command. When trying to run the command, you may get a prompt asking if you want to allow Terminal to access your downloads folder. Select "Yes" and the command will run. You should see the FFmpeg files that you downloaded and extracted listed in the output if you are in the right location.
+- At this point, you can verify that you're in the right location by running the ``ls`` command. When trying to run the command, you may get a prompt asking if you want to allow Terminal to access your downloads folder. Select "Yes" and the command will run. You should see the FFmpeg files that you downloaded and extracted listed in the output if you are in the right location.
 
 - Now that you are sure you are in the right directory, it's time to make the folder "/usr/local/bin" so that we'll be able to move our files there. Run the following command:
 
@@ -104,13 +106,21 @@ There are several options for installing FFmpeg on Mac computers
 
 - You will be prompted for your password and should not see any additional messages if the command ran successfully.
 
-- Now that the folder has been created, we simply need to copy our files there. Run the following commands:
+- Now that the folder has been created, we simply need to copy our files there. Run the following command:
 
 .. code-block:: bash
 
-   % sudo cp ./ffmpeg /usr/local/bin
-   % sudo cp ./ffprobe /usr/local/bin
-   % sudo cp ./ffplay /usr/local/bin
+   % sudo cp ffmpeg ffprobe ffplay /usr/local/bin
+
+- If you want to make sure that you successfully copied the files, you can run this command to list the contents of "/usr/local/bin":
+
+.. code-block:: bash
+
+   % ls /usr/local/bin
+
+- You should see your FFmpeg files listed in the output.
+
+- To verify that the installation works, continue on to section 4.
 
 ************
 3.3. Linux
