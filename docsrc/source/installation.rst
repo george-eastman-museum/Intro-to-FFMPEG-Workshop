@@ -1,14 +1,14 @@
 ####################
-3. Installing FFmpeg
+4. Installing FFmpeg
 ####################
 
 For the most up-to-date instructions on how to install FFMPEG on your operating system, you should check the `FFmpeg Official Website <https://ffmpeg.org/download.html>`_.
 
 ************
-3.1. Windows
+4.1. Windows
 ************
 
-3.1.1. Downloading
+4.1.1. Downloading
 =============================
 - The current builds for Windows are provided by gyan.dev.
 
@@ -28,7 +28,7 @@ For the most up-to-date instructions on how to install FFMPEG on your operating 
 
 - For now, if you want to run FFmpeg, you'll either need to drag and drop the "ffmpeg" file in the "bin" folder onto the command line or use the command line to navigate to the "bin" folder and run FFmpeg commands from there.
 
-3.1.2. Adding FFmpeg to Path
+4.1.2. Adding FFmpeg to Path
 =============================
 
 In order for FFmpeg to be easily callable by simply typing ``ffmpeg`` into the command line, we'll need to add it to the "Path" for your username.
@@ -64,45 +64,50 @@ In order for FFmpeg to be easily callable by simply typing ``ffmpeg`` into the c
 - To verify that the installation works, continue on to section 4.
 
 ************
-3.2. Mac
+4.2. Mac
 ************
 There are several options for installing FFmpeg on Mac computers
 
-3.2.1. Option 1:
-================
-- For an experience similar to Linux you can use a third party package manager for Macs like `Homebrew <https://brew.sh/>`_ or `MacPorts <https://www.macports.org/>`_.
+4.2.1. Option 1 - Install a Static Build
+==========================================
 
-- Further information on this process can be found `HERE <https://trac.ffmpeg.org/wiki/CompilationGuide/macOS>`_.
+4.2.1.1. Downloading
+--------------------------------
 
-3.2.2. Option 2:
-=================
 - Follow the Static Build Download link from the `FFmpeg website <https://ffmpeg.org/download.html#build-mac>`_.
 
 - This will take you to a new page where you can download FFmpeg, FFprobe, and FFplay separately.
 
-- FFmpeg recommends downloading the latest snapshots over the releases, so click the green button on the left with the a long name that looks something like: "ffmpeg-110422-g7b2851b290.7z".
+- FFmpeg recommends downloading the latest snapshots over the releases, so click the green button on the left with the a long name that looks something like: ffmpeg-(some long string of numbers and letters).7z.
+
+.. image:: images/mac_install0.png
 
 - Scroll down and repeat this for the FFplay and FFprobe download links on the page as well.
 
 - Once all the files have finished downloading, navigate to your Downloads folder and extract each of the ".7z" files by double clicking them.
 
-- You should now have an "ffmpeg", "ffprobe", and "ffplay" file in your downloads folder. You can drag and drop these files in a command line window as is to run them, but if we want them to be easily accessible on the command line you'll need to add them to your $PATH.
+.. image:: images/mac_install1.png
 
-- The folder /usr/local/bin/ should already be on your $PATH, so we're going to move them there (you can check by opening a Terminal window and running the command ``echo $PATH``).
+- You should now have an "ffmpeg", "ffprobe", and "ffplay" file in your downloads folder. You can drag and drop these files into a Terminal window as is to run them, but if we want them to be easily accessible on the command line they'll need to be added to your $PATH.
 
-- Open a new Terminal window and run the following command to change directories to your Downloads folder where the "ffmpeg", "ffprobe", and "ffplay" files are located.
+4.2.1.2. Adding FFmpeg to Path
+-------------------------------
+
+- Start by opening your "Applications" folder, navigating to the "Utilities" folder, and opening the Terminal application.
+
+- In the Terminal, run the following command (copy and paste the command, then press Enter/Return) to change directories to your Downloads folder where the "ffmpeg", "ffprobe", and "ffplay" files are located.
 
 .. code-block:: bash
 
-   % cd ~/Downloads/
+   cd ~/Downloads/
 
-- At this point, you can verify that you're in the right location by running the ``ls`` command. When trying to run the command, you may get a prompt asking if you want to allow Terminal to access your downloads folder. Select "Yes" and the command will run. You should see the FFmpeg files that you downloaded and extracted listed in the output if you are in the right location.
+- At this point, you can verify that you're in the right location by running the ``ls`` command as described in Section 2.2.3. When trying to run the command you may get a prompt asking if you want to allow Terminal to access your downloads folder. Select "Yes" and the command will run. You should see the FFmpeg files that you downloaded and extracted listed in the output if you are in the right location.
 
 - Now that you are sure you are in the right directory, it's time to make the folder "/usr/local/bin" so that we'll be able to move our files there. Run the following command:
 
 .. code-block:: bash
 
-   % sudo mkdir -p /usr/local/bin/
+   sudo mkdir -p /usr/local/bin/
 
 - You will be prompted for your password and should not see any additional messages if the command ran successfully.
 
@@ -110,20 +115,52 @@ There are several options for installing FFmpeg on Mac computers
 
 .. code-block:: bash
 
-   % sudo cp ffmpeg ffprobe ffplay /usr/local/bin
+   sudo cp ffmpeg ffprobe ffplay /usr/local/bin
 
 - If you want to make sure that you successfully copied the files, you can run this command to list the contents of "/usr/local/bin":
 
 .. code-block:: bash
 
-   % ls /usr/local/bin
+   ls /usr/local/bin
 
 - You should see your FFmpeg files listed in the output.
 
 - To verify that the installation works, continue on to section 4.
 
+4.2.1.3. Uninstalling
+-------------------------------
+
+- To uninstall the FFmpeg files, you simply need to delete the files from the folder we put them in.
+
+- Start by opening a Terminal window and changing directories to "/usr/local/bin".
+
+.. code-block:: bash
+
+   cd /usr/local/bin
+
+- Check that you are in the right location by running the ``ls`` command. You should see the "ffmpeg", "ffprobe", and "ffplay" files listed in the output.
+
+- Once you have confirmed that you are in the right location, run the ``rm`` command as a superuser to delete the "ffmpeg" file (NOTE: Be careful whenever running the ``rm`` command as a superuser. Make sure that you are only deleting the files you want to delete before running the command). The command will prompt you for your password before running.
+
+.. code-block:: bash
+
+   sudo rm ffmpeg
+
+- If the command completes successfully, you can now do the same for the "ffprobe" and "ffplay" files.
+
+.. code-block:: bash
+
+   sudo rm ffprobe
+   sudo rm ffplay
+
+4.2.2. Option 2 - Use a Package Manager
+==========================================
+- For an experience similar to Linux you can use a third party package manager for Macs like `Homebrew <https://brew.sh/>`_ or `MacPorts <https://www.macports.org/>`_.
+
+- Further information on this process can be found `HERE <https://trac.ffmpeg.org/wiki/CompilationGuide/macOS>`_.
+
 ************
-3.3. Linux
+4.3. Linux
 ************
 - FFmpeg can be installed using your operating system's package manager in most cases.
 
@@ -132,7 +169,7 @@ There are several options for installing FFmpeg on Mac computers
 - For running the most recent or specific versions of FFmpeg, static builds are also an option.
 
 **************
-3.4. ChromeOS
+4.4. ChromeOS
 **************
 - NOTE - NEED TO TEST
 

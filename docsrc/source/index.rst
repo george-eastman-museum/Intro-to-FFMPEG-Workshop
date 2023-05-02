@@ -11,8 +11,11 @@ Intro to FFMPEG Class Documentation
    :caption: Contents:
    
    links
+   getting_started
    command_line_basics
    installation
+   verifying_installation
+   make_a_test_video
 
 
 

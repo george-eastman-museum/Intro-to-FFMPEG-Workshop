@@ -1,80 +1,144 @@
 #######################
-2. Command Line Basics
+3. Command Line Basics
 #######################
 
-********************************
-2.1. Accessing the Command Line
-********************************
+**************************
+3.1. Navigation
+**************************
 
-Different operating systems will have different default applications for accessing the command line.
-
-2.1.1. Windows
+3.1.1. whoami
 ========================================
 
-Command Prompt
-----------------
-text
+Prints the user that is you are currently executing commands as.
 
-Powershell
-----------------
-text
+.. tabs::
+   .. group-tab:: MacOS
+      .. code-block:: bash
+      
+         whoami
+         
+   .. group-tab:: Linux
+      .. code-block:: bash
+      
+         whoami
+         
+   .. group-tab:: Windows
+      .. code-block:: bash
+      
+         whoami
 
-2.1.2. Mac
+3.1.2. Print Working Directory
 ========================================
 
-Terminal
-----------------
-text
+Prints the full path of the current "working" directory. This is where you are currently running commands from.
 
-2.1.3. Linux
+.. tabs::
+   .. group-tab:: MacOS
+      .. code-block:: bash
+      
+         pwd
+         
+   .. group-tab:: Linux
+      .. code-block:: bash
+      
+         pwd
+         
+   .. group-tab:: Windows
+      .. code-block:: bash
+      
+         cd
+
+3.1.3. List Folder Contents
 ========================================
 
-Terminal
-----------------
+Lists the contents of the current working directory. If you follow the command with the path to a different directory, it will list the contents of that directory instead.
+
+.. tabs::
+   .. group-tab:: MacOS
+   
+      List current folder contents
+      
+      .. code-block:: bash
+      
+         ls
+         
+      List contents of Documents folder
+      
+      .. code-block:: bash
+      
+         ls "/home/myUsername/Documents"
+         
+   .. group-tab:: Linux
+   
+      List current folder contents
+      
+      .. code-block:: bash
+      
+         ls
+         
+      List contents of Documents folder
+      
+      .. code-block:: bash
+      
+         ls "/home/myUsername/Documents"
+         
+   .. group-tab:: Windows
+   
+      List current folder contents
+      
+      .. code-block:: bash
+      
+         dir
+         
+      List contents of My Documents folder
+      
+      .. code-block:: bash
+      
+         dir "C:\Users\myUsername\Documents"
+         
+
+3.1.4. Notes About Quotes
+========================================
+text
+
+.. tabs::
+   .. group-tab:: MacOS
+      .. code-block:: bash
+      
+         "/home/myUsername/path with spaces"
+         
+   .. group-tab:: Linux
+      .. code-block:: bash
+      
+         "/home/myUsername/path with spaces"
+         
+   .. group-tab:: Windows
+      .. code-block:: bash
+      
+         "C:\Users\myUsername\path with spaces"
+
+**************************
+3.2. Wildcards
+**************************
 text
 
 **************************
-2.2. Navigation
-**************************
-
-2.2.1. whoami
-========================================
-text
-
-2.2.2. Print Working Directory
-========================================
-text
-
-2.2.3. List Folder Contents
-========================================
-text
-
-2.2.4. Notes About Quotes
-========================================
-text
-
-**************************
-2.3. Wildcards
-**************************
-text
-
-**************************
-2.4. Combining Commands
+3.3. Combining Commands
 **************************
 
 
-2.4.1. Performing Commands Sequentially
+3.3.1. Performing Commands Sequentially
 ========================================
 
-2.4.2. Conditionally Run Commands
+3.3.2. Conditionally Run Commands
 ========================================
 
-2.4.3. Pipe
+3.3.3. Pipe
 ========================================
 
-2.4.4. Redirect
+3.3.4. Redirect
 ========================================
 
 **************************
-2.5. Loops
+3.4. Loops
 **************************
