@@ -61,7 +61,7 @@ In order for FFmpeg to be easily callable by simply typing ``ffmpeg`` into the c
 
 .. image:: images/windows_install4.png
 
-- To verify that the installation works, continue on to section 4.
+- To verify that the installation works, continue on to :doc:`section 5 <verifying_installation>`.
 
 ************
 4.2. Mac
@@ -125,7 +125,7 @@ There are several options for installing FFmpeg on Mac computers
 
 - You should see your FFmpeg files listed in the output.
 
-- To verify that the installation works, continue on to section 4.
+- To verify that the installation works, continue on to :doc:`section 5 <verifying_installation>`.
 
 4.2.1.3. Uninstalling
 -------------------------------
@@ -168,6 +168,8 @@ There are several options for installing FFmpeg on Mac computers
 
 - For running the most recent or specific versions of FFmpeg, static builds are also an option.
 
+- To verify that the installation works, continue on to :doc:`section 5 <verifying_installation>`.
+
 **************
 4.4. ChromeOS
 **************
@@ -176,3 +178,5 @@ There are several options for installing FFmpeg on Mac computers
 - ChromeOS is based on Linux and should, in theory, be able to install FFmpeg using a .deb file
 
 - Static builds for Linux may also work on ChromeOS(?)
+
+- To verify that the installation works, continue on to :doc:`section 5 <verifying_installation>`.

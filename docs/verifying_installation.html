@@ -49,7 +49,12 @@
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">2. Getting Started - The Command Line</a></li>
 <li class="toctree-l1"><a class="reference internal" href="command_line_basics.html">3. Command Line Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">4. Installing FFmpeg</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">5. Verifying Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. Verifying Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#checking-the-version">5.1. Checking the Version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bringing-up-the-help-text">5.2. Bringing Up the Help Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reading-the-manual-macos-linux-only">5.3. Reading the Manual (MacOS/Linux ONLY)</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="make_a_test_video.html">6. Make a Test Video</a></li>
 </ul>
 
@@ -79,7 +84,53 @@
              
   <section id="verifying-installation">
 <h1>5. Verifying Installation<a class="headerlink" href="#verifying-installation" title="Permalink to this heading"></a></h1>
-<p>text</p>
+<p>To verify that FFmpeg is working as expected, we’ll run a couple of simple commands to check that we can successfully call the program and look at what those commands tell us.</p>
+<section id="checking-the-version">
+<h2>5.1. Checking the Version<a class="headerlink" href="#checking-the-version" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Let’s start by checking the version of FFmpeg we have installed.</p></li>
+<li><p>Try running the following command:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg -version
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>If the command worked, you should see something like this:</p></li>
+</ul>
+<img alt="_images/ffmpeg-version_output.png" src="_images/ffmpeg-version_output.png" />
+<ul class="simple">
+<li><p>Looking at the first line of the output, we can see that I have FFmpeg version 5.1.3 installed.</p></li>
+<li><p>The large block of text following this tells us how our particular install of FFmpeg is configured.</p></li>
+<li><p>Some functions require that FFmpeg be configured with certain options.</p></li>
+<li><p>For example, if we look at the output, we can see that <code class="docutils literal notranslate"><span class="pre">--enable-libsoxr</span></code> is listed in my configuration section. This means that FFmpeg can use the SoX Resampler library for audio.</p></li>
+</ul>
+</section>
+<section id="bringing-up-the-help-text">
+<h2>5.2. Bringing Up the Help Text<a class="headerlink" href="#bringing-up-the-help-text" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Next let’s bring up the help text for FFMPEG:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg -hide_banner -help
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>You should see a list of commands, each with a short description of what it does.</p></li>
+<li><p>In addition to the <code class="docutils literal notranslate"><span class="pre">-help</span></code> command, we also used the <code class="docutils literal notranslate"><span class="pre">-hide_banner</span></code> command here. This is one of several commands that impacts the amount of information that FFmpeg outputs to the command line. In this case, the command simply keeps FFMPEG from printing the version and configuration information at the top of its output.</p></li>
+</ul>
+</section>
+<section id="reading-the-manual-macos-linux-only">
+<h2>5.3. Reading the Manual (MacOS/Linux ONLY)<a class="headerlink" href="#reading-the-manual-macos-linux-only" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Finally, lets bring up the manual for FFMPEG:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>man ffmpeg
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>You can press <code class="docutils literal notranslate"><span class="pre">q</span></code> to exit the manual.</p></li>
+<li><p>PowerShell and Command Prompt do not have an exact equivalent of the <code class="docutils literal notranslate"><span class="pre">man</span></code> command. However, you can still access the <a class="reference external" href="https://ffmpeg.org/ffmpeg.html">full FFmpeg manual online</a>.</p></li>
+</ul>
+</section>
 </section>
 
 
