@@ -32,7 +32,7 @@ To verify that FFmpeg is working as expected, we'll run a couple of simple comma
 5.2. Bringing Up the Help Text
 ********************************************
 
-- Next let's bring up the help text for FFMPEG:
+- Next let's bring up the help text for FFmpeg:
 
 .. code-block:: bash
 
@@ -40,13 +40,13 @@ To verify that FFmpeg is working as expected, we'll run a couple of simple comma
 
 - You should see a list of commands, each with a short description of what it does.
 
-- In addition to the ``-help`` command, we also used the ``-hide_banner`` command here. This is one of several commands that impacts the amount of information that FFmpeg outputs to the command line. In this case, the command simply keeps FFMPEG from printing the version and configuration information at the top of its output.
+- In addition to the ``-help`` command, we also used the ``-hide_banner`` command here. This is one of several commands that impacts the amount of information that FFmpeg outputs to the command line. In this case, the command simply keeps FFmpeg from printing the version and configuration information at the top of its output.
 
 ********************************************
 5.3. Reading the Manual (MacOS/Linux ONLY)
 ********************************************
 
-- Finally, lets bring up the manual for FFMPEG:
+- Finally, lets bring up the manual for FFmpeg:
 
 .. code-block:: bash
 
