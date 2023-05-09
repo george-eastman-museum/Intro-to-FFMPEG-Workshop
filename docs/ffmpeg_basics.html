@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6. FFmpeg Basics &mdash; Intro-to-FFMPEG-Workshop  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/tabs.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="7. Make a Test Video" href="make_a_test_video.html" />
+    <link rel="prev" title="5. Verifying Installation" href="verifying_installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Intro-to-FFMPEG-Workshop
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="links.html">1. Helpful Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">2. Getting Started - The Command Line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="command_line_basics.html">3. Command Line Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">4. Installing FFmpeg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="verifying_installation.html">5. Verifying Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. FFmpeg Basics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#basic-ffmpeg-command-syntax">6.1. Basic FFMPEG Command Syntax</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ffmpeg"><code class="docutils literal notranslate"><span class="pre">ffmpeg</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#i-input-file"><code class="docutils literal notranslate"><span class="pre">-i</span> <span class="pre">input_file</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-v-libx264-crf-18-preset-slow"><code class="docutils literal notranslate"><span class="pre">-c:v</span> <span class="pre">libx264</span> <span class="pre">-crf</span> <span class="pre">18</span> <span class="pre">-preset</span> <span class="pre">slow</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-a-aac-b-a-256k"><code class="docutils literal notranslate"><span class="pre">-c:a</span> <span class="pre">aac</span> <span class="pre">-b:a</span> <span class="pre">256k</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output-file"><code class="docutils literal notranslate"><span class="pre">output_file</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#interpreting-ffmpeg-messages">6.2. Interpreting FFmpeg Messages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#progress">6.2.1. Progress</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#warnings">6.2.2. Warnings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#errors">6.2.3. Errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#changing-verbosity">6.2.4. Changing Verbosity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#overwriting-files">6.2.5. Overwriting Files</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="make_a_test_video.html">7. Make a Test Video</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Intro-to-FFMPEG-Workshop</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">6. FFmpeg Basics</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/jycm205/Intro-to-FFMPEG-Workshop/blob/main/docsrc/source/ffmpeg_basics.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ffmpeg-basics">
+<h1>6. FFmpeg Basics<a class="headerlink" href="#ffmpeg-basics" title="Permalink to this heading"></a></h1>
+<section id="basic-ffmpeg-command-syntax">
+<h2>6.1. Basic FFMPEG Command Syntax<a class="headerlink" href="#basic-ffmpeg-command-syntax" title="Permalink to this heading"></a></h2>
+<p>A simple FFmpeg command for transcoding to an H.264 file with AAC audio might look something like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>input_file<span class="w"> </span>-c:v<span class="w"> </span>libx264<span class="w"> </span>-crf<span class="w"> </span><span class="m">18</span><span class="w"> </span>-preset<span class="w"> </span>slow<span class="w"> </span>-c:a<span class="w"> </span>aac<span class="w"> </span>-b:a<span class="w"> </span>256k<span class="w"> </span>output_file
+</pre></div>
+</div>
+<p>Let’s look at what each part of this command does.</p>
+<section id="ffmpeg">
+<h3><code class="docutils literal notranslate"><span class="pre">ffmpeg</span></code><a class="headerlink" href="#ffmpeg" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>This is where we tell the command line which program we want to run.</p></li>
+<li><p>In this case we are calling FFmpeg.</p></li>
+<li><p>If you have one of the static builds of FFmpeg, you could also use the full path to that static build file here (just drag and drop the “ffmpeg” file on the command line!) or <code class="docutils literal notranslate"><span class="pre">cd</span></code> to that directory and run commands from there.</p></li>
+</ul>
+</section>
+<section id="i-input-file">
+<h3><code class="docutils literal notranslate"><span class="pre">-i</span> <span class="pre">input_file</span></code><a class="headerlink" href="#i-input-file" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>Input files are indicated using <code class="docutils literal notranslate"><span class="pre">-i</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">input_file</span></code> is just a generic stand-in to tell us that, whatever your input file is, it should go here. If you wanted to run this command on an actual file, you would need to replace this with the path to the particular file that you want to transcode (just drag and drop it on the command line).</p></li>
+<li><p>There are some cases where you may want to specify multiple inputs in a single command. You can repeat the <code class="docutils literal notranslate"><span class="pre">-i</span></code> command multiple times to accomplish this (i.e. <code class="docutils literal notranslate"><span class="pre">-i</span> <span class="pre">input_1.mov</span> <span class="pre">-i</span> <span class="pre">input_2.wav</span></code>).</p></li>
+</ul>
+</section>
+<section id="c-v-libx264-crf-18-preset-slow">
+<h3><code class="docutils literal notranslate"><span class="pre">-c:v</span> <span class="pre">libx264</span> <span class="pre">-crf</span> <span class="pre">18</span> <span class="pre">-preset</span> <span class="pre">slow</span></code><a class="headerlink" href="#c-v-libx264-crf-18-preset-slow" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-c:v</span></code> indicates that we are specifying video codec settings that we want to use for our output.</p></li>
+<li><p>This is followed by the video encoder that we want to use. In this example we are using <code class="docutils literal notranslate"><span class="pre">libx264</span></code>, which is the name that FFmpeg uses to call the free and open source H.264 encoder library, x264.</p></li>
+<li><p>Some codecs may have multiple encoders available to choose from. For example, FFmpeg has two encoders to choose from for ProRes (<code class="docutils literal notranslate"><span class="pre">prores-ks</span></code> and <code class="docutils literal notranslate"><span class="pre">prores-aw</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-crf</span> <span class="pre">18</span> <span class="pre">-preset</span> <span class="pre">slow</span></code> are encoding settings specific to the x264 encoding library that configure some of the compression settings for the output.</p></li>
+<li><p>A detailed explanation of these settings as well as other settings that we could have used here can be found on the <a class="reference external" href="https://trac.ffmpeg.org/wiki/Encode/H.264">FFmpeg Encoding wiki’s H.264 page</a>.</p></li>
+<li><p>Encoding settings will vary from one codec to another, so it’s always a good idea to read the documentation and look at some examples to get a better idea of the exact settings you’ll want to use.</p></li>
+</ul>
+</section>
+<section id="c-a-aac-b-a-256k">
+<h3><code class="docutils literal notranslate"><span class="pre">-c:a</span> <span class="pre">aac</span> <span class="pre">-b:a</span> <span class="pre">256k</span></code><a class="headerlink" href="#c-a-aac-b-a-256k" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-c:a</span></code> indicates that we are specifying audio codec settings that we want to use for our output. Notice that this is similar to the structure of what we had done for the video codec, but with a different codec library and different settings.</p></li>
+<li><p>In this case we are using the <code class="docutils literal notranslate"><span class="pre">aac</span></code> encoder for the audio.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-b:a</span> <span class="pre">256k</span></code> are encoding settings for the AAC encoding library. These settings tell FFmpeg to use a constant bitrate of 256kB/s for the audio.</p></li>
+<li><p>A detailed explanation of these settings as well as other settings that we could have used here can be found on the <a class="reference external" href="https://trac.ffmpeg.org/wiki/Encode/AAC">FFmpeg Encoding wiki’s AAC page</a>. Note that this example uses the native FFmpeg AAC encoder, but FFmpeg can also be configured with another AAC encoder, <code class="docutils literal notranslate"><span class="pre">libfdk_aac</span></code>.</p></li>
+<li><p>If our input video had no audio streams we could leave <code class="docutils literal notranslate"><span class="pre">-c:a</span> <span class="pre">aac</span> <span class="pre">-b:a</span> <span class="pre">250k</span></code> out of the command entirely since there would be no audio to encode.</p></li>
+<li><p>If we wanted to copy the audio from our input_file without re-encoding, we could have used <code class="docutils literal notranslate"><span class="pre">-c:a</span> <span class="pre">copy</span></code> instead.</p></li>
+<li><p>If we had left out any audio codec settings, FFmpeg would have chosen a default setting for us based on the output format we specified.</p></li>
+</ul>
+</section>
+<section id="output-file">
+<h3><code class="docutils literal notranslate"><span class="pre">output_file</span></code><a class="headerlink" href="#output-file" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>This part of the command specifies the full path to our output file.</p></li>
+<li><p>Similar to how <code class="docutils literal notranslate"><span class="pre">input_file</span></code> had been used as a generic stand-in for the input, this is just a generic stand-in for an output file that needs to be replaced with a real output file path if we actually want to run this command. In this case, we might output an H.264 file with AAC audio to a <code class="docutils literal notranslate"><span class="pre">.mp4</span></code> or <code class="docutils literal notranslate"><span class="pre">.mov</span></code> file (i.e. <code class="docutils literal notranslate"><span class="pre">/Users/myUserName/Videos/example.mp4</span></code>).</p></li>
+<li><p>Unlike the input, our output file does not need to be indicated with any kind of flag like <code class="docutils literal notranslate"><span class="pre">-i</span></code>. FFmpeg automatically assumes that this is our output based on the fact that it appears at the end of the command.</p></li>
+</ul>
+</section>
+</section>
+<section id="interpreting-ffmpeg-messages">
+<h2>6.2. Interpreting FFmpeg Messages<a class="headerlink" href="#interpreting-ffmpeg-messages" title="Permalink to this heading"></a></h2>
+<p>By default FFmpeg will output a lot of information to the command line as it processes files.</p>
+<section id="progress">
+<h3>6.2.1. Progress<a class="headerlink" href="#progress" title="Permalink to this heading"></a></h3>
+<img alt="_images/ffmpeg-progress_output.png" src="_images/ffmpeg-progress_output.png" />
+<ul class="simple">
+<li><p>FFmpeg will start by outputting the banner with information about the FFmpeg version and how it is configured.</p></li>
+<li><p>This will be followed by information about the input and output files you have set with your command.</p></li>
+<li><p>As FFmpeg processes the encoding, it will output a regularly updating string with information about the fps that the encoding process is running at, bitrate, etc.</p></li>
+<li><p>This output can be useful for judging how long processing might take or how large your output file might be.</p></li>
+<li><p>If you want to stop an encoding after it has started you can press “q” to interrupt the process.</p></li>
+<li><p>FFmpeg may output other information such as errors or warnings to the command line as well.</p></li>
+</ul>
+</section>
+<section id="warnings">
+<h3>6.2.2. Warnings<a class="headerlink" href="#warnings" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>Warnings are indicated by yellow text in FFmpeg’s output.</p></li>
+<li><p>Generally warnings provide you with information about things that <em>may</em> cause issues, but do not prevent an operation from running.</p></li>
+<li><p>Many warnings are benign, but it is always a good idea to look up what a warning means if you aren’t sure.</p></li>
+<li><p>For example, unsupported timecode streams in an input will often cause warnings.</p></li>
+</ul>
+</section>
+<section id="errors">
+<h3>6.2.3. Errors<a class="headerlink" href="#errors" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>Errors are indicated by red text in FFmpeg’s output.</p></li>
+<li><p>You will typically encounter errors when certain settings are used incorrectly. Often these will prevent an operation from running.</p></li>
+<li><p>For example, FFmpeg will output an error message if you try to use <code class="docutils literal notranslate"><span class="pre">-c:v</span> <span class="pre">copy</span></code> with a video filter (<code class="docutils literal notranslate"><span class="pre">-vf</span></code>) because these two settings contradict one another.</p></li>
+</ul>
+</section>
+<section id="changing-verbosity">
+<h3>6.2.4. Changing Verbosity<a class="headerlink" href="#changing-verbosity" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>FFmpeg, FFprobe, and FFplay have various settings for adjusting the amount of information that gets output to the command line as they runs.</p></li>
+<li><p>For example, in the Verifying Installation section we used <code class="docutils literal notranslate"><span class="pre">-hide_banner</span></code> to suppress the banner that FFmpeg typically outputs when it runs.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">-loglevel</span></code> command can also be used to adjust the verbosity of the output (<code class="docutils literal notranslate"><span class="pre">-v</span></code> can also be used in place of <code class="docutils literal notranslate"><span class="pre">-loglevel</span></code>). You can run the command <code class="docutils literal notranslate"><span class="pre">ffmpeg</span> <span class="pre">-loglevel</span> <span class="pre">-h</span></code> to see a list of options. Documentation about these settings can also be found <a class="reference external" href="https://ffmpeg.org/ffprobe.html">HERE</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ffmpeg</span> <span class="pre">-loglevel</span> <span class="pre">quiet</span> <span class="pre">-i</span> <span class="pre">input_file</span> <span class="pre">output_file</span></code> can be used to prevent FFmpeg from writing anything to the command line while running.</p></li>
+</ul>
+</section>
+<section id="overwriting-files">
+<h3>6.2.5. Overwriting Files<a class="headerlink" href="#overwriting-files" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>If your output file already exists, FFmpeg will prompt you asking if you want to overwrite the existing file before it proceeds.</p></li>
+<li><p>If you type <code class="docutils literal notranslate"><span class="pre">y</span></code> and press enter, FFmpeg will overwrite the existing file. If you type <code class="docutils literal notranslate"><span class="pre">n</span></code> and press enter, FFmpeg will stop the command you are trying to run.</p></li>
+<li><p>You can tell FFmpeg to automatically select “yes” using the <code class="docutils literal notranslate"><span class="pre">-y</span></code> flag before your input (i.e. <code class="docutils literal notranslate"><span class="pre">ffmpeg</span> <span class="pre">-y</span> <span class="pre">-i</span> <span class="pre">input_file</span> <span class="pre">output_file</span></code>).</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="verifying_installation.html" class="btn btn-neutral float-left" title="5. Verifying Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="make_a_test_video.html" class="btn btn-neutral float-right" title="7. Make a Test Video" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, jycm205.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

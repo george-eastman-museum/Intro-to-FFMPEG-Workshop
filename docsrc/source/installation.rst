@@ -2,7 +2,7 @@
 4. Installing FFmpeg
 ####################
 
-For the most up-to-date instructions on how to install FFMPEG on your operating system, you should check the `FFmpeg Official Website <https://ffmpeg.org/download.html>`_.
+For the most up-to-date instructions on how to install FFmpeg on your operating system, you should check the `FFmpeg Official Website <https://ffmpeg.org/download.html>`_.
 
 ************
 4.1. Windows

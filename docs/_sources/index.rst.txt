@@ -15,6 +15,7 @@ Intro to FFMPEG Workshop
    command_line_basics
    installation
    verifying_installation
+   ffmpeg_basics
    make_a_test_video
 
 

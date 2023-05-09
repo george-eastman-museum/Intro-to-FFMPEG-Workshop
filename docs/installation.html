@@ -13,10 +13,8 @@
   <![endif]-->
   
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -69,7 +67,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="verifying_installation.html">5. Verifying Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="make_a_test_video.html">6. Make a Test Video</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ffmpeg_basics.html">6. FFmpeg Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="make_a_test_video.html">7. Make a Test Video</a></li>
 </ul>
 
         </div>
@@ -98,7 +97,7 @@
              
   <section id="installing-ffmpeg">
 <h1>4. Installing FFmpeg<a class="headerlink" href="#installing-ffmpeg" title="Permalink to this heading"></a></h1>
-<p>For the most up-to-date instructions on how to install FFMPEG on your operating system, you should check the <a class="reference external" href="https://ffmpeg.org/download.html">FFmpeg Official Website</a>.</p>
+<p>For the most up-to-date instructions on how to install FFmpeg on your operating system, you should check the <a class="reference external" href="https://ffmpeg.org/download.html">FFmpeg Official Website</a>.</p>
 <section id="windows">
 <h2>4.1. Windows<a class="headerlink" href="#windows" title="Permalink to this heading"></a></h2>
 <section id="downloading">
@@ -175,27 +174,27 @@
 <li><p>Start by opening your “Applications” folder, navigating to the “Utilities” folder, and opening the Terminal application.</p></li>
 <li><p>In the Terminal, run the following command (copy and paste the command, then press Enter/Return) to change directories to your Downloads folder where the “ffmpeg”, “ffprobe”, and “ffplay” files are located.</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/Downloads/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/Downloads/
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>At this point, you can verify that you’re in the right location by running the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command as described in Section 2.2.3. When trying to run the command you may get a prompt asking if you want to allow Terminal to access your downloads folder. Select “Yes” and the command will run. You should see the FFmpeg files that you downloaded and extracted listed in the output if you are in the right location.</p></li>
 <li><p>Now that you are sure you are in the right directory, it’s time to make the folder “/usr/local/bin” so that we’ll be able to move our files there. Run the following command:</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo mkdir -p /usr/local/bin/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/usr/local/bin/
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>You will be prompted for your password and should not see any additional messages if the command ran successfully.</p></li>
 <li><p>Now that the folder has been created, we simply need to copy our files there. Run the following command:</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo cp ffmpeg ffprobe ffplay /usr/local/bin
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>cp<span class="w"> </span>ffmpeg<span class="w"> </span>ffprobe<span class="w"> </span>ffplay<span class="w"> </span>/usr/local/bin
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>If you want to make sure that you successfully copied the files, you can run this command to list the contents of “/usr/local/bin”:</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls /usr/local/bin
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>/usr/local/bin
 </pre></div>
 </div>
 <ul class="simple">
@@ -209,21 +208,21 @@
 <li><p>To uninstall the FFmpeg files, you simply need to delete the files from the folder we put them in.</p></li>
 <li><p>Start by opening a Terminal window and changing directories to “/usr/local/bin”.</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /usr/local/bin
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/usr/local/bin
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>Check that you are in the right location by running the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command. You should see the “ffmpeg”, “ffprobe”, and “ffplay” files listed in the output.</p></li>
 <li><p>Once you have confirmed that you are in the right location, run the <code class="docutils literal notranslate"><span class="pre">rm</span></code> command as a superuser to delete the “ffmpeg” file (NOTE: Be careful whenever running the <code class="docutils literal notranslate"><span class="pre">rm</span></code> command as a superuser. Make sure that you are only deleting the files you want to delete before running the command). The command will prompt you for your password before running.</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo rm ffmpeg
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>rm<span class="w"> </span>ffmpeg
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>If the command completes successfully, you can now do the same for the “ffprobe” and “ffplay” files.</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo rm ffprobe
-sudo rm ffplay
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>rm<span class="w"> </span>ffprobe
+sudo<span class="w"> </span>rm<span class="w"> </span>ffplay
 </pre></div>
 </div>
 </section>

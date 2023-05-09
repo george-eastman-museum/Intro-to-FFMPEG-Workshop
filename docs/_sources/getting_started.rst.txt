@@ -61,6 +61,28 @@ The name of your default terminal application may vary depending on the distribu
 ********************************
 2.2. What Am I Looking At?
 ********************************
-text
-image
-text
+
+2.2.1. Mac/Linux
+========================================
+
+When you first open the command line, you will see something that looks similar to this on a Mac or Linux computer:
+
+.. image:: images/linux_terminal-example0.png
+
+The terminal gives us a few pieces of information: 
+
+- ``username @ computer name``
+
+- This is followed by the folder we are currently running commands from (``~`` indicates our "home" directory)
+
+- The ``$`` (or ``%`` on Mac computers) indicates that everything after that will be commands that we type.
+
+
+2.2.2. Windows
+========================================
+
+On a Windows computer, the Command Prompt window will look something like this:
+
+.. image:: images/windows_cmd-example0.png
+
+In this example, the part before the ``>`` tells us which folder we are currently running commands from, while the area after the ``>`` is where we'll be typing commands.

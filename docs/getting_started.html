@@ -13,10 +13,8 @@
   <![endif]-->
   
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -63,13 +61,18 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#what-am-i-looking-at">2.2. What Am I Looking At?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-am-i-looking-at">2.2. What Am I Looking At?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#mac-linux">2.2.1. Mac/Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2.2.2. Windows</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="command_line_basics.html">3. Command Line Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">4. Installing FFmpeg</a></li>
 <li class="toctree-l1"><a class="reference internal" href="verifying_installation.html">5. Verifying Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="make_a_test_video.html">6. Make a Test Video</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ffmpeg_basics.html">6. FFmpeg Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="make_a_test_video.html">7. Make a Test Video</a></li>
 </ul>
 
         </div>
@@ -147,9 +150,23 @@
 </section>
 <section id="what-am-i-looking-at">
 <h2>2.2. What Am I Looking At?<a class="headerlink" href="#what-am-i-looking-at" title="Permalink to this heading"></a></h2>
-<p>text
-image
-text</p>
+<section id="mac-linux">
+<h3>2.2.1. Mac/Linux<a class="headerlink" href="#mac-linux" title="Permalink to this heading"></a></h3>
+<p>When you first open the command line, you will see something that looks similar to this on a Mac or Linux computer:</p>
+<img alt="_images/linux_terminal-example0.png" src="_images/linux_terminal-example0.png" />
+<p>The terminal gives us a few pieces of information:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">username</span> <span class="pre">&#64;</span> <span class="pre">computer</span> <span class="pre">name</span></code></p></li>
+<li><p>This is followed by the folder we are currently running commands from (<code class="docutils literal notranslate"><span class="pre">~</span></code> indicates our “home” directory)</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">$</span></code> (or <code class="docutils literal notranslate"><span class="pre">%</span></code> on Mac computers) indicates that everything after that will be commands that we type.</p></li>
+</ul>
+</section>
+<section id="id2">
+<h3>2.2.2. Windows<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<p>On a Windows computer, the Command Prompt window will look something like this:</p>
+<img alt="_images/windows_cmd-example0.png" src="_images/windows_cmd-example0.png" />
+<p>In this example, the part before the <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> tells us which folder we are currently running commands from, while the area after the <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> is where we’ll be typing commands.</p>
+</section>
 </section>
 </section>
 
