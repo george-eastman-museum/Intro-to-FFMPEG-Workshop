@@ -17,6 +17,13 @@ Intro to FFMPEG Workshop
    verifying_installation
    ffmpeg_basics
    make_a_test_video
+   copying_streams
+   cutting_and_combining
+   pad_and_crop
+   extract_frames
+   image_sequences
+   using_ffprobe
+   frame_and_stream_md5s
 
 
 

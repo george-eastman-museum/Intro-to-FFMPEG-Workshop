@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Index &mdash; Intro-to-FFMPEG-Workshop  documentation</title>
+  <title>9. Cutting and Combining Video &mdash; Intro-to-FFMPEG-Workshop  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/tabs.css" type="text/css" />
@@ -14,10 +15,11 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
-        <script src="_static/tabs.js"></script>
     <script src="_static/js/theme.js"></script>
-    <link rel="index" title="Index" href="#" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="10. Pad, Crop, and Scale Videos" href="pad_and_crop.html" />
+    <link rel="prev" title="8. Copying Streams and Editing Metadata" href="copying_streams.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -40,7 +42,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="links.html">1. Helpful Links</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">2. Getting Started - The Command Line</a></li>
 <li class="toctree-l1"><a class="reference internal" href="command_line_basics.html">3. Command Line Basics</a></li>
@@ -49,7 +51,17 @@
 <li class="toctree-l1"><a class="reference internal" href="ffmpeg_basics.html">6. FFmpeg Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="make_a_test_video.html">7. Make a Test Video</a></li>
 <li class="toctree-l1"><a class="reference internal" href="copying_streams.html">8. Copying Streams and Editing Metadata</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cutting_and_combining.html">9. Cutting and Combining Video</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">9. Cutting and Combining Video</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#cut-video">9.1. Cut Video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#combine-videos">9.2. Combine Videos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#concat-protocol">9.2.1. Concat Protocol</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#concat-demuxer">9.2.2. Concat Demuxer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#concat-video-filter">9.2.3. Concat Video Filter</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#combine-separate-audio-and-video-files">9.3. Combine Separate Audio and Video Files</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="pad_and_crop.html">10. Pad, Crop, and Scale Videos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="extract_frames.html">11. Extracting Frames and Streams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image_sequences.html">12. Image Sequences</a></li>
@@ -71,9 +83,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Index</li>
+      <li class="breadcrumb-item active">9. Cutting and Combining Video</li>
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/jycm205/Intro-to-FFMPEG-Workshop/blob/main/docsrc/source/genindex" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/jycm205/Intro-to-FFMPEG-Workshop/blob/main/docsrc/source/cutting_and_combining.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -81,17 +93,45 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
+  <section id="cutting-and-combining-video">
+<h1>9. Cutting and Combining Video<a class="headerlink" href="#cutting-and-combining-video" title="Permalink to this heading"></a></h1>
+<section id="cut-video">
+<h2>9.1. Cut Video<a class="headerlink" href="#cut-video" title="Permalink to this heading"></a></h2>
+</section>
+<section id="combine-videos">
+<h2>9.2. Combine Videos<a class="headerlink" href="#combine-videos" title="Permalink to this heading"></a></h2>
+<p>See <a class="reference external" href="https://trac.ffmpeg.org/wiki/Concatenate">documentation</a>.</p>
+<p>Approach depends on input: concat protocol, concat demuxer, concat video filter</p>
+<section id="concat-protocol">
+<h3>9.2.1. Concat Protocol<a class="headerlink" href="#concat-protocol" title="Permalink to this heading"></a></h3>
+<p>Formats such as DV, MPEG-1, and MPEG-2 can be combined with the concat protocol.</p>
+</section>
+<section id="concat-demuxer">
+<h3>9.2.2. Concat Demuxer<a class="headerlink" href="#concat-demuxer" title="Permalink to this heading"></a></h3>
+<p>Used to losslessly combine codecs such as h.264.</p>
+<p>Files should have the same aspect ratio.</p>
+</section>
+<section id="concat-video-filter">
+<h3>9.2.3. Concat Video Filter<a class="headerlink" href="#concat-video-filter" title="Permalink to this heading"></a></h3>
+<p>Used when combining different codecs.</p>
+</section>
+</section>
+<section id="combine-separate-audio-and-video-files">
+<h2>9.3. Combine Separate Audio and Video Files<a class="headerlink" href="#combine-separate-audio-and-video-files" title="Permalink to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>input_0.mp4<span class="w"> </span>-i<span class="w"> </span>input_1.mp4<span class="w"> </span>-c<span class="w"> </span>copy<span class="w"> </span>-map<span class="w"> </span><span class="m">0</span>:v:0<span class="w"> </span>-map<span class="w"> </span><span class="m">1</span>:a:0<span class="w"> </span>out.mp4
+</pre></div>
 </div>
+<p>Include <code class="docutils literal notranslate"><span class="pre">-shortest</span></code> to tell FFmpeg to stop when the shorter of the two streams ends.</p>
+</section>
+</section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="copying_streams.html" class="btn btn-neutral float-left" title="8. Copying Streams and Editing Metadata" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pad_and_crop.html" class="btn btn-neutral float-right" title="10. Pad, Crop, and Scale Videos" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
