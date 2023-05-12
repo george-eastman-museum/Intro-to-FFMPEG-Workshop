@@ -10,7 +10,8 @@
 
    ffmpeg -i input.mp4 -vf "pad=width=640:height=480:x=0:y=120:color=black" -acodec copy output.mp4
 
-will output to 640x480 with the video 120 pixels from the top
+
+Will output to 640x480 with the video 120 pixels from the top
 
 ********************************
 10.2. Crop
