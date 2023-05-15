@@ -49,20 +49,25 @@
 <li class="toctree-l1"><a class="reference internal" href="installation.html">4. Installing FFmpeg</a></li>
 <li class="toctree-l1"><a class="reference internal" href="verifying_installation.html">5. Verifying Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ffmpeg_basics.html">6. FFmpeg Basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="make_a_test_video.html">7. Make a Test Video</a></li>
-<li class="toctree-l1"><a class="reference internal" href="copying_streams.html">8. Copying Streams and Editing Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generating_files.html">7. Generating Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="copying_streams.html">8. Stream Mapping and Editing Metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cutting_and_combining.html">9. Cutting and Combining Video</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">10. Pad, Crop, and Scale Videos</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#pad">10.1. Pad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#crop">10.2. Crop</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#scale">10.3. Scale</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#scale-and-pad">10.4. Scale and Pad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scale">10.3. Scale</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#scale-to-a-specific-size">10.3.1. Scale to a Specific Size</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#downscale-and-maintain-aspect-ratio">10.3.2. Downscale and Maintain Aspect Ratio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scale-and-pad">10.3.3. Scale and Pad</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="extract_frames.html">11. Extracting Frames and Streams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image_sequences.html">12. Image Sequences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using_ffprobe.html">13. Using FFprobe</a></li>
 <li class="toctree-l1"><a class="reference internal" href="frame_and_stream_md5s.html">14. Frame and Stream MD5s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generate_spectrograms.html">15. Spectrograms</a></li>
 </ul>
 
         </div>
@@ -79,7 +84,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">10. Pad, Crop, and Scale Videos</li>
+      <li class="breadcrumb-item active"><span class="section-number">10. </span>Pad, Crop, and Scale Videos</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/jycm205/Intro-to-FFMPEG-Workshop/blob/main/docsrc/source/pad_and_crop.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -90,31 +95,41 @@
            <div itemprop="articleBody">
              
   <section id="pad-crop-and-scale-videos">
-<h1>10. Pad, Crop, and Scale Videos<a class="headerlink" href="#pad-crop-and-scale-videos" title="Permalink to this heading"></a></h1>
+<h1><span class="section-number">10. </span>Pad, Crop, and Scale Videos<a class="headerlink" href="#pad-crop-and-scale-videos" title="Permalink to this heading"></a></h1>
 <section id="pad">
-<h2>10.1. Pad<a class="headerlink" href="#pad" title="Permalink to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>input.mp4<span class="w"> </span>-vf<span class="w"> </span><span class="s2">&quot;pad=width=640:height=480:x=0:y=120:color=black&quot;</span><span class="w"> </span>-acodec<span class="w"> </span>copy<span class="w"> </span>output.mp4
+<h2><span class="section-number">10.1. </span>Pad<a class="headerlink" href="#pad" title="Permalink to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>input.mp4<span class="w"> </span>-vf<span class="w"> </span><span class="s2">&quot;pad=width=1280:height=720:x=0:y=120:color=black&quot;</span><span class="w"> </span>output.mp4
 </pre></div>
 </div>
-<p>Will output to 640x480 with the video 120 pixels from the top</p>
+<p>Will output to 1280x720 with the video 120 pixels from the top</p>
 </section>
 <section id="crop">
-<h2>10.2. Crop<a class="headerlink" href="#crop" title="Permalink to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span><span class="k">in</span>.mp4<span class="w"> </span>-vf<span class="w"> </span><span class="s2">&quot;crop=in_w:in_h&quot;</span><span class="w"> </span>-c:a<span class="w"> </span>copy<span class="w"> </span>out.mp4
+<h2><span class="section-number">10.2. </span>Crop<a class="headerlink" href="#crop" title="Permalink to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span><span class="k">in</span>.mp4<span class="w"> </span>-vf<span class="w"> </span><span class="s2">&quot;crop=in_w:in_h&quot;</span><span class="w"> </span>output.mp4
 </pre></div>
 </div>
 </section>
 <section id="scale">
-<h2>10.3. Scale<a class="headerlink" href="#scale" title="Permalink to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>input.avi<span class="w"> </span>-vf<span class="w"> </span><span class="nv">scale</span><span class="o">=</span><span class="m">320</span>:240<span class="w"> </span>output.avi
+<h2><span class="section-number">10.3. </span>Scale<a class="headerlink" href="#scale" title="Permalink to this heading"></a></h2>
+<p>Documentation about scaling can be found <a class="reference external" href="https://trac.ffmpeg.org/wiki/Scaling">HERE</a>.</p>
+<section id="scale-to-a-specific-size">
+<h3><span class="section-number">10.3.1. </span>Scale to a Specific Size<a class="headerlink" href="#scale-to-a-specific-size" title="Permalink to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>input.mp4<span class="w"> </span>-vf<span class="w"> </span><span class="nv">scale</span><span class="o">=</span><span class="m">1920</span>:1080<span class="w"> </span>output.mp4
+</pre></div>
+</div>
+</section>
+<section id="downscale-and-maintain-aspect-ratio">
+<h3><span class="section-number">10.3.2. </span>Downscale and Maintain Aspect Ratio<a class="headerlink" href="#downscale-and-maintain-aspect-ratio" title="Permalink to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>input.mp4<span class="w"> </span>-vf<span class="w"> </span><span class="nv">scale</span><span class="o">=</span><span class="s2">&quot;trunc(oh*a/2)*2:720&quot;</span><span class="w"> </span>output.mp4
 </pre></div>
 </div>
 </section>
 <section id="scale-and-pad">
-<h2>10.4. Scale and Pad<a class="headerlink" href="#scale-and-pad" title="Permalink to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>input.mkv<span class="w"> </span>-vf<span class="w"> </span><span class="s2">&quot;scale=iw*min(1920/iw\,1080/ih):ih*min(1920/iw\,1080/ih),pad=1920:1080:(1920-iw)/2:(1080-ih)/2&quot;</span><span class="w"> </span>output.mov
+<h3><span class="section-number">10.3.3. </span>Scale and Pad<a class="headerlink" href="#scale-and-pad" title="Permalink to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>input.mp4<span class="w"> </span>-vf<span class="w"> </span><span class="s2">&quot;scale=iw*min(1280/iw\,720/ih):ih*min(1280/iw\,720/ih),pad=1280:720:(1280-iw)/2:(720-ih)/2&quot;</span><span class="w"> </span>-c:v<span class="w"> </span>libx264<span class="w"> </span>output.mp4
 </pre></div>
 </div>
+</section>
 </section>
 </section>
 

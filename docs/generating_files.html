@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>7. Generating Files &mdash; Intro-to-FFMPEG-Workshop  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/tabs.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="8. Stream Mapping and Editing Metadata" href="copying_streams.html" />
+    <link rel="prev" title="6. FFmpeg Basics" href="ffmpeg_basics.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Intro-to-FFMPEG-Workshop
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="links.html">1. Helpful Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">2. Getting Started - The Command Line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="command_line_basics.html">3. Command Line Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">4. Installing FFmpeg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="verifying_installation.html">5. Verifying Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ffmpeg_basics.html">6. FFmpeg Basics</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">7. Generating Files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#using-ffplay-to-preview-outputs">7.1. Using FFplay to Preview Outputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#video">7.2. Video</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#mandelbrot-pattern">7.2.1. Mandelbrot Pattern</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#test-patterns">7.2.2. Test Patterns</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#audio">7.3. Audio</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#noise-generator">7.3.1. Noise Generator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sine-wave-generator">7.3.2. Sine Wave Generator</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="copying_streams.html">8. Stream Mapping and Editing Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cutting_and_combining.html">9. Cutting and Combining Video</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pad_and_crop.html">10. Pad, Crop, and Scale Videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extract_frames.html">11. Extracting Frames and Streams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image_sequences.html">12. Image Sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_ffprobe.html">13. Using FFprobe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frame_and_stream_md5s.html">14. Frame and Stream MD5s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generate_spectrograms.html">15. Spectrograms</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Intro-to-FFMPEG-Workshop</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">7. </span>Generating Files</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/jycm205/Intro-to-FFMPEG-Workshop/blob/main/docsrc/source/generating_files.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="generating-files">
+<h1><span class="section-number">7. </span>Generating Files<a class="headerlink" href="#generating-files" title="Permalink to this heading"></a></h1>
+<p>FFmpeg can generate many different patterns using its filtergraph functionality. Generating signals and patterns uses the <code class="docutils literal notranslate"><span class="pre">lavfi</span></code> command.</p>
+<section id="using-ffplay-to-preview-outputs">
+<h2><span class="section-number">7.1. </span>Using FFplay to Preview Outputs<a class="headerlink" href="#using-ffplay-to-preview-outputs" title="Permalink to this heading"></a></h2>
+<p>FFplay can be a useful tool for checking what the output will look/sound like before writing it to a file.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffplay<span class="w"> </span>-f<span class="w"> </span>lavfi<span class="w"> </span>-i<span class="w"> </span><span class="o">{[</span>filter<span class="o">]</span><span class="w"> </span><span class="o">[</span>parameters<span class="o">]}</span>
+</pre></div>
+</div>
+</section>
+<section id="video">
+<h2><span class="section-number">7.2. </span>Video<a class="headerlink" href="#video" title="Permalink to this heading"></a></h2>
+<section id="mandelbrot-pattern">
+<h3><span class="section-number">7.2.1. </span>Mandelbrot Pattern<a class="headerlink" href="#mandelbrot-pattern" title="Permalink to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-f<span class="w"> </span>lavfi<span class="w"> </span>-i<span class="w"> </span><span class="nv">mandelbrot</span><span class="o">=</span><span class="nv">size</span><span class="o">=</span>1280x720:r<span class="o">=</span><span class="m">24</span><span class="w"> </span>-t<span class="w"> </span><span class="m">60</span><span class="w"> </span>-c:v<span class="w"> </span>libx264<span class="w"> </span>-crf<span class="w"> </span><span class="m">26</span><span class="w"> </span>-preset<span class="w"> </span>fast<span class="w"> </span>-profile:v<span class="w"> </span>main<span class="w"> </span>-pix_fmt<span class="w"> </span>yuv420p<span class="w"> </span>output_file.mov
+</pre></div>
+</div>
+<p>Documentation about adjusting parameters for the Mandelbrot pattern can be found in <a class="reference external" href="http://ffmpeg.org/ffmpeg-filters.html#mandelbrot">section 15.6 of the FFmpeg filters documentation</a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ffmpeg</span></code></p>
+<ul class="simple">
+<li><p>Call FFmpeg</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">-f</span> <span class="pre">lavfi</span> <span class="pre">-i</span> <span class="pre">mandelbrot=size=1280x720:r=24</span></code></p>
+<ul class="simple">
+<li><p>Here we are passing the <code class="docutils literal notranslate"><span class="pre">mandelbrot</span></code> filter as our input.</p></li>
+<li><p>We are including a few other settings (<code class="docutils literal notranslate"><span class="pre">size</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code>) to set the size and framerate as well.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">-t</span> <span class="pre">60</span></code></p>
+<ul class="simple">
+<li><p>This sets the time/duration of our video in seconds.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">-c:v</span> <span class="pre">libx264</span></code></p>
+<ul class="simple">
+<li><p>This is setting libx264 as the encoder that we’ll use.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">-crf</span> <span class="pre">26</span> <span class="pre">-preset</span> <span class="pre">fast</span> <span class="pre">-profile:v</span> <span class="pre">main</span></code></p>
+<ul class="simple">
+<li><p>This is configuring the compression settings for libx264.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">-pix_fmt</span> <span class="pre">yuv420p</span></code></p>
+<ul class="simple">
+<li><p>This sets the pixel format of our output video. This includes things like the chroma subsampling (4:2:0 in this case).</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">output_file.mp4</span></code></p>
+<ul class="simple">
+<li><p>This needs to be the full path to the output file that we want to create.</p></li>
+</ul>
+</section>
+<section id="test-patterns">
+<h3><span class="section-number">7.2.2. </span>Test Patterns<a class="headerlink" href="#test-patterns" title="Permalink to this heading"></a></h3>
+<p>The same command structure can be used and modified to fit your needs.</p>
+<p>Here is a short list of some test patterns that FFmpeg can output: <code class="docutils literal notranslate"><span class="pre">testsrc</span></code>, <code class="docutils literal notranslate"><span class="pre">testsrc2</span></code>, <code class="docutils literal notranslate"><span class="pre">smptebars</span></code>, <code class="docutils literal notranslate"><span class="pre">smptehdbars</span></code>, <code class="docutils literal notranslate"><span class="pre">pal75bars</span></code>, <code class="docutils literal notranslate"><span class="pre">colorspectrum</span></code></p>
+<p>Documentation on the available test patterns that FFmpeg can generate can be found in <a class="reference external" href="http://ffmpeg.org/ffmpeg-filters.html#allrgb_002c-allyuv_002c-color_002c-colorchart_002c-colorspectrum_002c-haldclutsrc_002c-nullsrc_002c-pal75bars_002c-pal100bars_002c-rgbtestsrc_002c-smptebars_002c-smptehdbars_002c-testsrc_002c-testsrc2_002c-yuvtestsrc">section 15.10 of the FFmpeg filters documentation</a>.</p>
+</section>
+</section>
+<section id="audio">
+<h2><span class="section-number">7.3. </span>Audio<a class="headerlink" href="#audio" title="Permalink to this heading"></a></h2>
+<section id="noise-generator">
+<h3><span class="section-number">7.3.1. </span>Noise Generator<a class="headerlink" href="#noise-generator" title="Permalink to this heading"></a></h3>
+<p>FFmpeg can generate various types of noise using the <code class="docutils literal notranslate"><span class="pre">anoisesrc</span></code> filter. Documentation on this filter can be found in <a class="reference external" href="https://ffmpeg.org/ffmpeg-filters.html#anoisesrc">section 9.8 of the FFmpeg filters documentation</a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-f<span class="w"> </span>lavfi<span class="w"> </span>-i<span class="w"> </span><span class="nv">anoisesrc</span><span class="o">=</span><span class="nv">color</span><span class="o">=</span>pink:duration<span class="o">=</span><span class="m">100</span>:sample_rate<span class="o">=</span><span class="m">48000</span><span class="w"> </span>-af<span class="w"> </span><span class="nv">volume</span><span class="o">=</span>-18dB<span class="w"> </span>-c:a<span class="w"> </span>pcm_s16le<span class="w"> </span>output_file.wav
+</pre></div>
+</div>
+<p>The structure of this command is similar to the previous video examples, but uses some additional audio-specific settings, such as <code class="docutils literal notranslate"><span class="pre">sample_rate</span></code> to set the audio sample rate and <code class="docutils literal notranslate"><span class="pre">-af</span></code> to set the volume. In this case, we are also outputting to an uncompressed 16-bit PCM WAV file.</p>
+</section>
+<section id="sine-wave-generator">
+<h3><span class="section-number">7.3.2. </span>Sine Wave Generator<a class="headerlink" href="#sine-wave-generator" title="Permalink to this heading"></a></h3>
+<p>FFmpeg’s sine wave generator is another filter that can be used to produce sine wave patterns at different frequencies. Documentation on this filter can be found in <a class="reference external" href="https://ffmpeg.org/ffmpeg-filters.html#sine">section 9.11 of the FFmpeg filters documentation</a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-f<span class="w"> </span>lavfi<span class="w"> </span>-i<span class="w"> </span><span class="nv">sine</span><span class="o">=</span><span class="nv">frequency</span><span class="o">=</span><span class="m">1000</span>:duration<span class="o">=</span><span class="m">100</span>:sample_rate<span class="o">=</span><span class="m">48000</span><span class="w"> </span>-c:a<span class="w"> </span>pcm_s16le<span class="w"> </span>output_file.wav
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ffmpeg_basics.html" class="btn btn-neutral float-left" title="6. FFmpeg Basics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="copying_streams.html" class="btn btn-neutral float-right" title="8. Stream Mapping and Editing Metadata" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, jycm205.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

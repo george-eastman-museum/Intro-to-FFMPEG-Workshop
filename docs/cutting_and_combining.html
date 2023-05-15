@@ -15,11 +15,12 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/tabs.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="10. Pad, Crop, and Scale Videos" href="pad_and_crop.html" />
-    <link rel="prev" title="8. Copying Streams and Editing Metadata" href="copying_streams.html" /> 
+    <link rel="prev" title="8. Stream Mapping and Editing Metadata" href="copying_streams.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -49,14 +50,17 @@
 <li class="toctree-l1"><a class="reference internal" href="installation.html">4. Installing FFmpeg</a></li>
 <li class="toctree-l1"><a class="reference internal" href="verifying_installation.html">5. Verifying Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ffmpeg_basics.html">6. FFmpeg Basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="make_a_test_video.html">7. Make a Test Video</a></li>
-<li class="toctree-l1"><a class="reference internal" href="copying_streams.html">8. Copying Streams and Editing Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generating_files.html">7. Generating Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="copying_streams.html">8. Stream Mapping and Editing Metadata</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">9. Cutting and Combining Video</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#cut-video">9.1. Cut Video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cut-video">9.1. Cut Video</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#define-a-duration">9.1.1. Define a Duration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#define-a-timecode-range">9.1.2. Define a Timecode Range</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cutting-from-the-end-of-the-file">9.1.3. Cutting from the End of the File</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#combine-videos">9.2. Combine Videos</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#concat-protocol">9.2.1. Concat Protocol</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#concat-demuxer">9.2.2. Concat Demuxer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#concat-video-filter">9.2.3. Concat Video Filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-concat-demuxer">9.2.1. Using the Concat Demuxer</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#combine-separate-audio-and-video-files">9.3. Combine Separate Audio and Video Files</a></li>
@@ -67,6 +71,7 @@
 <li class="toctree-l1"><a class="reference internal" href="image_sequences.html">12. Image Sequences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using_ffprobe.html">13. Using FFprobe</a></li>
 <li class="toctree-l1"><a class="reference internal" href="frame_and_stream_md5s.html">14. Frame and Stream MD5s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generate_spectrograms.html">15. Spectrograms</a></li>
 </ul>
 
         </div>
@@ -83,7 +88,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">9. Cutting and Combining Video</li>
+      <li class="breadcrumb-item active"><span class="section-number">9. </span>Cutting and Combining Video</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/jycm205/Intro-to-FFMPEG-Workshop/blob/main/docsrc/source/cutting_and_combining.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -94,34 +99,82 @@
            <div itemprop="articleBody">
              
   <section id="cutting-and-combining-video">
-<h1>9. Cutting and Combining Video<a class="headerlink" href="#cutting-and-combining-video" title="Permalink to this heading"></a></h1>
+<h1><span class="section-number">9. </span>Cutting and Combining Video<a class="headerlink" href="#cutting-and-combining-video" title="Permalink to this heading"></a></h1>
 <section id="cut-video">
-<h2>9.1. Cut Video<a class="headerlink" href="#cut-video" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">9.1. </span>Cut Video<a class="headerlink" href="#cut-video" title="Permalink to this heading"></a></h2>
+<p>Cutting video can be done several different ways using FFmpeg. Note that you can only copy video streams if cutting on intra-compressed frames.</p>
+<section id="define-a-duration">
+<h3><span class="section-number">9.1.1. </span>Define a Duration<a class="headerlink" href="#define-a-duration" title="Permalink to this heading"></a></h3>
+<p>You can define a start point for the video and then a duration for how long the video should run using the following command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>input.mkv<span class="w"> </span>-ss<span class="w"> </span><span class="m">00</span>:01:00<span class="w"> </span>-t<span class="w"> </span><span class="m">00</span>:00:05<span class="w"> </span>-c<span class="w"> </span>copy<span class="w"> </span>output.mp4
+</pre></div>
+</div>
+</section>
+<section id="define-a-timecode-range">
+<h3><span class="section-number">9.1.2. </span>Define a Timecode Range<a class="headerlink" href="#define-a-timecode-range" title="Permalink to this heading"></a></h3>
+<p>You can define a range of timecodes using the following command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>input.mkv<span class="w"> </span>-ss<span class="w"> </span><span class="m">00</span>:01:00<span class="w"> </span>-to<span class="w"> </span><span class="m">00</span>:01:05<span class="w"> </span>-c<span class="w"> </span>copy<span class="w"> </span>output.mp4
+</pre></div>
+</div>
+</section>
+<section id="cutting-from-the-end-of-the-file">
+<h3><span class="section-number">9.1.3. </span>Cutting from the End of the File<a class="headerlink" href="#cutting-from-the-end-of-the-file" title="Permalink to this heading"></a></h3>
+<p>You can use the following command to seek backwards from the end of the file to the point that you want to cut as well. Note that this takes a negative time value.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>input.mkv<span class="w"> </span>-sseof<span class="w"> </span>-00:01:00<span class="w"> </span>-c<span class="w"> </span>copy<span class="w"> </span>output.mp4
+</pre></div>
+</div>
+</section>
 </section>
 <section id="combine-videos">
-<h2>9.2. Combine Videos<a class="headerlink" href="#combine-videos" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">9.2. </span>Combine Videos<a class="headerlink" href="#combine-videos" title="Permalink to this heading"></a></h2>
 <p>See <a class="reference external" href="https://trac.ffmpeg.org/wiki/Concatenate">documentation</a>.</p>
-<p>Approach depends on input: concat protocol, concat demuxer, concat video filter</p>
-<section id="concat-protocol">
-<h3>9.2.1. Concat Protocol<a class="headerlink" href="#concat-protocol" title="Permalink to this heading"></a></h3>
-<p>Formats such as DV, MPEG-1, and MPEG-2 can be combined with the concat protocol.</p>
-</section>
-<section id="concat-demuxer">
-<h3>9.2.2. Concat Demuxer<a class="headerlink" href="#concat-demuxer" title="Permalink to this heading"></a></h3>
-<p>Used to losslessly combine codecs such as h.264.</p>
-<p>Files should have the same aspect ratio.</p>
-</section>
-<section id="concat-video-filter">
-<h3>9.2.3. Concat Video Filter<a class="headerlink" href="#concat-video-filter" title="Permalink to this heading"></a></h3>
-<p>Used when combining different codecs.</p>
+<p>There are several ways to combine videos with FFmpeg depending on your inputs:</p>
+<ul class="simple">
+<li><p>concat demuxer: Used to losslessly combine codecs such as H.264. Files should have the same aspect ratio.</p></li>
+<li><p>concat protocol: Formats such as DV, MPEG-1, and MPEG-2 can be combined with the concat protocol.</p></li>
+<li><p>concat video filter: Used when combining different codecs.</p></li>
+</ul>
+<section id="using-the-concat-demuxer">
+<h3><span class="section-number">9.2.1. </span>Using the Concat Demuxer<a class="headerlink" href="#using-the-concat-demuxer" title="Permalink to this heading"></a></h3>
+<p>The concat demuxer takes a list of files as an input and combines them to create the output. The text list uses the following structre:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>file<span class="w"> </span><span class="s1">&#39;file1.mp4&#39;</span>
+file<span class="w"> </span><span class="s1">&#39;file2.mp4&#39;</span>
+</pre></div>
+</div>
+<p>The file list can be manually created, or automatically created using a command similar to this:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TWFjT1M=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TWFjT1M=" name="TWFjT1M=" role="tab" tabindex="0">MacOS</button><button aria-controls="panel-0-TGludXg=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="-1">Linux</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TWFjT1M=" class="sphinx-tabs-panel group-tab" id="panel-0-TWFjT1M=" name="TWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span>f<span class="w"> </span><span class="k">in</span><span class="w"> </span>*.mp4<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;file &#39;</span><span class="nv">$f</span><span class="s2">&#39;&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>mylist.txt<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">done</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span>f<span class="w"> </span><span class="k">in</span><span class="w"> </span>*.mp4<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;file &#39;</span><span class="nv">$f</span><span class="s2">&#39;&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>mylist.txt<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">done</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p>If using CMD:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span><span class="k">for</span><span class="w"> </span>%i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">(</span>*.mp4<span class="o">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>@echo<span class="w"> </span>file<span class="w"> </span><span class="s1">&#39;%i&#39;</span><span class="o">)</span><span class="w"> </span>&gt;<span class="w"> </span>mylist.txt
+</pre></div>
+</div>
+<p>If using Powershell:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>foreach<span class="w"> </span><span class="o">(</span><span class="nv">$i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>Get-ChildItem<span class="w"> </span>.<span class="se">\*</span>.mp4<span class="o">)</span><span class="w"> </span><span class="o">{</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;file &#39;</span><span class="nv">$i</span><span class="s2">&#39;&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>mylist.txt<span class="o">}</span>
+</pre></div>
+</div>
+</div></div>
+<p>Once the text list is created, the files can be combined with the folowing FFmpeg command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-f<span class="w"> </span>concat<span class="w"> </span>-safe<span class="w"> </span><span class="m">0</span><span class="w"> </span>-i<span class="w"> </span>mylist.txt<span class="w"> </span>-c<span class="w"> </span>copy<span class="w"> </span>output.mp4
+</pre></div>
+</div>
 </section>
 </section>
 <section id="combine-separate-audio-and-video-files">
-<h2>9.3. Combine Separate Audio and Video Files<a class="headerlink" href="#combine-separate-audio-and-video-files" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">9.3. </span>Combine Separate Audio and Video Files<a class="headerlink" href="#combine-separate-audio-and-video-files" title="Permalink to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">-map</span></code> can be used to combine streams from different sources into a single output file.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>input_0.mp4<span class="w"> </span>-i<span class="w"> </span>input_1.mp4<span class="w"> </span>-c<span class="w"> </span>copy<span class="w"> </span>-map<span class="w"> </span><span class="m">0</span>:v:0<span class="w"> </span>-map<span class="w"> </span><span class="m">1</span>:a:0<span class="w"> </span>out.mp4
 </pre></div>
 </div>
-<p>Include <code class="docutils literal notranslate"><span class="pre">-shortest</span></code> to tell FFmpeg to stop when the shorter of the two streams ends.</p>
+<p>If the two files have different durations, the <code class="docutils literal notranslate"><span class="pre">-shortest</span></code> command can be used to tell FFmpeg to stop when the shorter of the two streams ends.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>input_0.mp4<span class="w"> </span>-i<span class="w"> </span>input_1.mp4<span class="w"> </span>-c<span class="w"> </span>copy<span class="w"> </span>-map<span class="w"> </span><span class="m">0</span>:v:0<span class="w"> </span>-map<span class="w"> </span><span class="m">1</span>:a:0<span class="w"> </span>-shortest<span class="w"> </span>out.mp4
+</pre></div>
+</div>
+<p>Note that the output container must be compatible with all of the streams for this to work.</p>
 </section>
 </section>
 
@@ -129,7 +182,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="copying_streams.html" class="btn btn-neutral float-left" title="8. Copying Streams and Editing Metadata" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="copying_streams.html" class="btn btn-neutral float-left" title="8. Stream Mapping and Editing Metadata" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="pad_and_crop.html" class="btn btn-neutral float-right" title="10. Pad, Crop, and Scale Videos" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

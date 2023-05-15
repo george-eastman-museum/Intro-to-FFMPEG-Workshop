@@ -50,32 +50,41 @@
 <li class="toctree-l2"><a class="reference internal" href="#navigation">3.1. Navigation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#whoami">3.1.1. whoami</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#print-working-directory">3.1.2. Print Working Directory</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#list-folder-contents">3.1.3. List Folder Contents</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#notes-about-quotes">3.1.4. Notes About Quotes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#change-directories">3.1.3. Change Directories</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#list-folder-contents">3.1.4. List Folder Contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notes-about-quotes">3.1.5. Notes About Quotes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#wildcards">3.2. Wildcards</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#combining-commands">3.3. Combining Commands</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#performing-commands-sequentially">3.3.1. Performing Commands Sequentially</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#conditionally-run-commands">3.3.2. Conditionally Run Commands</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pipe">3.3.3. Pipe</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#redirect">3.3.4. Redirect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#redirects-and-pipes">3.3. Redirects and Pipes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pipe">3.3.1. Pipe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#redirect">3.3.2. Redirect</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#loops">3.4. Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#combining-commands">3.4. Combining Commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#performing-commands-sequentially">3.4.1. Performing Commands Sequentially</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conditionally-run-commands">3.4.2. Conditionally Run Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#loops-and-batch-processing">3.5. Loops and Batch Processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#for-loops">3.5.1. For Loops</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#checksumming-files">3.6. Checksumming Files</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">4. Installing FFmpeg</a></li>
 <li class="toctree-l1"><a class="reference internal" href="verifying_installation.html">5. Verifying Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ffmpeg_basics.html">6. FFmpeg Basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="make_a_test_video.html">7. Make a Test Video</a></li>
-<li class="toctree-l1"><a class="reference internal" href="copying_streams.html">8. Copying Streams and Editing Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generating_files.html">7. Generating Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="copying_streams.html">8. Stream Mapping and Editing Metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cutting_and_combining.html">9. Cutting and Combining Video</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pad_and_crop.html">10. Pad, Crop, and Scale Videos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="extract_frames.html">11. Extracting Frames and Streams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image_sequences.html">12. Image Sequences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using_ffprobe.html">13. Using FFprobe</a></li>
 <li class="toctree-l1"><a class="reference internal" href="frame_and_stream_md5s.html">14. Frame and Stream MD5s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generate_spectrograms.html">15. Spectrograms</a></li>
 </ul>
 
         </div>
@@ -92,7 +101,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">3. Command Line Basics</li>
+      <li class="breadcrumb-item active"><span class="section-number">3. </span>Command Line Basics</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/jycm205/Intro-to-FFMPEG-Workshop/blob/main/docsrc/source/command_line_basics.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -103,11 +112,11 @@
            <div itemprop="articleBody">
              
   <section id="command-line-basics">
-<h1>3. Command Line Basics<a class="headerlink" href="#command-line-basics" title="Permalink to this heading"></a></h1>
+<h1><span class="section-number">3. </span>Command Line Basics<a class="headerlink" href="#command-line-basics" title="Permalink to this heading"></a></h1>
 <section id="navigation">
-<h2>3.1. Navigation<a class="headerlink" href="#navigation" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">3.1. </span>Navigation<a class="headerlink" href="#navigation" title="Permalink to this heading"></a></h2>
 <section id="whoami">
-<h3>3.1.1. whoami<a class="headerlink" href="#whoami" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">3.1.1. </span>whoami<a class="headerlink" href="#whoami" title="Permalink to this heading"></a></h3>
 <p>Prints the user that is you are currently executing commands as.</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-TWFjT1M=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-TWFjT1M=" name="TWFjT1M=" role="tab" tabindex="0">MacOS</button><button aria-controls="panel-0-TGludXg=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="-1">Linux</button><button aria-controls="panel-0-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-0-TWFjT1M=" class="sphinx-tabs-panel group-tab" id="panel-0-TWFjT1M=" name="TWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>whoami
@@ -122,7 +131,7 @@
 </div></div>
 </section>
 <section id="print-working-directory">
-<h3>3.1.2. Print Working Directory<a class="headerlink" href="#print-working-directory" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">3.1.2. </span>Print Working Directory<a class="headerlink" href="#print-working-directory" title="Permalink to this heading"></a></h3>
 <p>Prints the full path of the current “working” directory. This is where you are currently running commands from.</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-TWFjT1M=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-TWFjT1M=" name="TWFjT1M=" role="tab" tabindex="0">MacOS</button><button aria-controls="panel-1-TGludXg=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-TGludXg=" name="TGludXg=" role="tab" tabindex="-1">Linux</button><button aria-controls="panel-1-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-1-TWFjT1M=" class="sphinx-tabs-panel group-tab" id="panel-1-TWFjT1M=" name="TWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">pwd</span>
@@ -136,11 +145,53 @@
 </div>
 </div></div>
 </section>
+<section id="change-directories">
+<h3><span class="section-number">3.1.3. </span>Change Directories<a class="headerlink" href="#change-directories" title="Permalink to this heading"></a></h3>
+<p>We can navigate folders on our computer from the command line using the <code class="docutils literal notranslate"><span class="pre">cd</span></code> command similar to how we would in a GUI file browser.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-TWFjT1M=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-TWFjT1M=" name="TWFjT1M=" role="tab" tabindex="0">MacOS</button><button aria-controls="panel-2-TGludXg=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-TGludXg=" name="TGludXg=" role="tab" tabindex="-1">Linux</button><button aria-controls="panel-2-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-2-TWFjT1M=" class="sphinx-tabs-panel group-tab" id="panel-2-TWFjT1M=" name="TWFjT1M=" role="tabpanel" tabindex="0"><p>Change directories to Downloads folder.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/home/myUsername/Downloads
+</pre></div>
+</div>
+<p>Change directories to current User’s home directory.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~
+</pre></div>
+</div>
+<p>Go back one folder level.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>..
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-TGludXg=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><p>Change directories to Downloads folder.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/home/myUsername/Downloads
+</pre></div>
+</div>
+<p>Change directories to current User’s home directory.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~
+</pre></div>
+</div>
+<p>Go back one folder level.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>..
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p>Change directories to Downloads folder.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>C:<span class="se">\D</span>ownloads
+</pre></div>
+</div>
+<p>When changing between different drives, include <cite>/d</cite>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/d<span class="w"> </span>D:<span class="se">\D</span>irectory
+</pre></div>
+</div>
+<p>Go back one folder level.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>..
+</pre></div>
+</div>
+</div></div>
+</section>
 <section id="list-folder-contents">
-<h3>3.1.3. List Folder Contents<a class="headerlink" href="#list-folder-contents" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">3.1.4. </span>List Folder Contents<a class="headerlink" href="#list-folder-contents" title="Permalink to this heading"></a></h3>
 <p>Lists the contents of the current working directory. If you follow the command with the path to a different directory, it will list the contents of that directory instead.</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-TWFjT1M=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-TWFjT1M=" name="TWFjT1M=" role="tab" tabindex="0">MacOS</button><button aria-controls="panel-2-TGludXg=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-TGludXg=" name="TGludXg=" role="tab" tabindex="-1">Linux</button><button aria-controls="panel-2-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-2-TWFjT1M=" class="sphinx-tabs-panel group-tab" id="panel-2-TWFjT1M=" name="TWFjT1M=" role="tabpanel" tabindex="0"><p>List current folder contents</p>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-TWFjT1M=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-3-TWFjT1M=" name="TWFjT1M=" role="tab" tabindex="0">MacOS</button><button aria-controls="panel-3-TGludXg=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-TGludXg=" name="TGludXg=" role="tab" tabindex="-1">Linux</button><button aria-controls="panel-3-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-3-TWFjT1M=" class="sphinx-tabs-panel group-tab" id="panel-3-TWFjT1M=" name="TWFjT1M=" role="tabpanel" tabindex="0"><p>List current folder contents</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls
 </pre></div>
 </div>
@@ -148,7 +199,7 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span><span class="s2">&quot;/home/myUsername/Documents&quot;</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-2-TGludXg=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><p>List current folder contents</p>
+</div><div aria-labelledby="tab-3-TGludXg=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-3-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><p>List current folder contents</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls
 </pre></div>
 </div>
@@ -156,7 +207,7 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span><span class="s2">&quot;/home/myUsername/Documents&quot;</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-2-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p>List current folder contents</p>
+</div><div aria-labelledby="tab-3-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-3-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p>List current folder contents</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>dir
 </pre></div>
 </div>
@@ -167,16 +218,16 @@
 </div></div>
 </section>
 <section id="notes-about-quotes">
-<h3>3.1.4. Notes About Quotes<a class="headerlink" href="#notes-about-quotes" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">3.1.5. </span>Notes About Quotes<a class="headerlink" href="#notes-about-quotes" title="Permalink to this heading"></a></h3>
 <p>The command line uses spaces to separate various parts of commands. As a result, file and folder paths that contain spaces need to be handled in special ways to ensure that those spaces are correctly read as part of a larger string of text rather than separators within the command. A common way to accomplish this is to enclose the path in single (<code class="docutils literal notranslate"><span class="pre">''</span></code>) or double (<code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>) quotes.</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-TWFjT1M=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-3-TWFjT1M=" name="TWFjT1M=" role="tab" tabindex="0">MacOS</button><button aria-controls="panel-3-TGludXg=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-TGludXg=" name="TGludXg=" role="tab" tabindex="-1">Linux</button><button aria-controls="panel-3-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-3-TWFjT1M=" class="sphinx-tabs-panel group-tab" id="panel-3-TWFjT1M=" name="TWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;/home/myUsername/path with spaces&quot;</span>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-TWFjT1M=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-4-TWFjT1M=" name="TWFjT1M=" role="tab" tabindex="0">MacOS</button><button aria-controls="panel-4-TGludXg=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-4-TGludXg=" name="TGludXg=" role="tab" tabindex="-1">Linux</button><button aria-controls="panel-4-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-4-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-4-TWFjT1M=" class="sphinx-tabs-panel group-tab" id="panel-4-TWFjT1M=" name="TWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;/home/myUsername/path with spaces&quot;</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-3-TGludXg=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-3-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;/home/myUsername/path with spaces&quot;</span>
+</div><div aria-labelledby="tab-4-TGludXg=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-4-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;/home/myUsername/path with spaces&quot;</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-3-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-3-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;C:\Users\myUsername\path with spaces&quot;</span>
+</div><div aria-labelledby="tab-4-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-4-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;C:\Users\myUsername\path with spaces&quot;</span>
 </pre></div>
 </div>
 </div></div>
@@ -188,31 +239,79 @@
 </section>
 </section>
 <section id="wildcards">
-<h2>3.2. Wildcards<a class="headerlink" href="#wildcards" title="Permalink to this heading"></a></h2>
-<p>text</p>
+<h2><span class="section-number">3.2. </span>Wildcards<a class="headerlink" href="#wildcards" title="Permalink to this heading"></a></h2>
+<p>Certain special characters (<code class="docutils literal notranslate"><span class="pre">?</span></code>, <code class="docutils literal notranslate"><span class="pre">!</span></code>, <code class="docutils literal notranslate"><span class="pre">[]</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>) are used to match patterns. This can be very useful when trying to run a command on a certain subset of files or folders that share certain identifying characteristics. One example of a very common wildcard is <code class="docutils literal notranslate"><span class="pre">*</span></code>, which matches any combination of characters.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-TWFjT1M=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-5-TWFjT1M=" name="TWFjT1M=" role="tab" tabindex="0">MacOS</button><button aria-controls="panel-5-TGludXg=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-5-TGludXg=" name="TGludXg=" role="tab" tabindex="-1">Linux</button><button aria-controls="panel-5-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-5-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-5-TWFjT1M=" class="sphinx-tabs-panel group-tab" id="panel-5-TWFjT1M=" name="TWFjT1M=" role="tabpanel" tabindex="0"><p>List all .mp4 files in the current directory</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>*.mov
+</pre></div>
+</div>
+<p>List all .mp3 files in every folder in the Music directory</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>/home/myUsername/Music/*/*.mp3
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-5-TGludXg=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-5-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><p>List all .mp4 files in the current directory.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>*.mp4
+</pre></div>
+</div>
+<p>List all .mp3 files in every folder in the Music directory.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>/home/myUsername/Music/*/*.mp3
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-5-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-5-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p>List all .mp4 files in the current directory.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>dir<span class="w"> </span>*.mp4
+</pre></div>
+</div>
+<p>List all .mp3 files in every folder in the Music directory.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>dir<span class="w"> </span>C:<span class="se">\U</span>sers<span class="se">\m</span>yUsername<span class="se">\M</span>usic<span class="se">\*\*</span>.mp3
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="redirects-and-pipes">
+<h2><span class="section-number">3.3. </span>Redirects and Pipes<a class="headerlink" href="#redirects-and-pipes" title="Permalink to this heading"></a></h2>
+<section id="pipe">
+<h3><span class="section-number">3.3.1. </span>Pipe<a class="headerlink" href="#pipe" title="Permalink to this heading"></a></h3>
+<p>Pipes (<code class="docutils literal notranslate"><span class="pre">|</span></code>) are used to pass the output from one command to another program.</p>
+</section>
+<section id="redirect">
+<h3><span class="section-number">3.3.2. </span>Redirect<a class="headerlink" href="#redirect" title="Permalink to this heading"></a></h3>
+<p>Redirects (<code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> or <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;&lt;</span></code> to append) are used to pass the output from one command to a file or stream.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-6-TWFjT1M=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-6-TWFjT1M=" name="TWFjT1M=" role="tab" tabindex="0">MacOS</button><button aria-controls="panel-6-TGludXg=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-6-TGludXg=" name="TGludXg=" role="tab" tabindex="-1">Linux</button><button aria-controls="panel-6-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-6-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-6-TWFjT1M=" class="sphinx-tabs-panel group-tab" id="panel-6-TWFjT1M=" name="TWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>&gt;<span class="w"> </span>file_list.txt
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-6-TGludXg=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-6-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>&gt;<span class="w"> </span>file_list.txt
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-6-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-6-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>dir<span class="w"> </span>&gt;<span class="w"> </span>file_list.txt
+</pre></div>
+</div>
+</div></div>
+</section>
 </section>
 <section id="combining-commands">
-<h2>3.3. Combining Commands<a class="headerlink" href="#combining-commands" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">3.4. </span>Combining Commands<a class="headerlink" href="#combining-commands" title="Permalink to this heading"></a></h2>
 <section id="performing-commands-sequentially">
-<h3>3.3.1. Performing Commands Sequentially<a class="headerlink" href="#performing-commands-sequentially" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">3.4.1. </span>Performing Commands Sequentially<a class="headerlink" href="#performing-commands-sequentially" title="Permalink to this heading"></a></h3>
 <p>Commands can be set to execute one after another. This allows us to queue up a number of commands to run in sequence.</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-TWFjT1M=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-4-TWFjT1M=" name="TWFjT1M=" role="tab" tabindex="0">MacOS</button><button aria-controls="panel-4-TGludXg=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-4-TGludXg=" name="TGludXg=" role="tab" tabindex="-1">Linux</button><button aria-controls="panel-4-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-4-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-4-TWFjT1M=" class="sphinx-tabs-panel group-tab" id="panel-4-TWFjT1M=" name="TWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>command1<span class="w"> </span><span class="p">;</span><span class="w"> </span>command2
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-7-TWFjT1M=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-7-TWFjT1M=" name="TWFjT1M=" role="tab" tabindex="0">MacOS</button><button aria-controls="panel-7-TGludXg=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-7-TGludXg=" name="TGludXg=" role="tab" tabindex="-1">Linux</button><button aria-controls="panel-7-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-7-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-7-TWFjT1M=" class="sphinx-tabs-panel group-tab" id="panel-7-TWFjT1M=" name="TWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>command1<span class="w"> </span><span class="p">;</span><span class="w"> </span>command2
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-4-TGludXg=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-4-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>command1<span class="w"> </span><span class="p">;</span><span class="w"> </span>command2
+</div><div aria-labelledby="tab-7-TGludXg=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-7-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>command1<span class="w"> </span><span class="p">;</span><span class="w"> </span>command2
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-4-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-4-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>command1<span class="w"> </span><span class="p">&amp;</span><span class="w"> </span>command2
+</div><div aria-labelledby="tab-7-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-7-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>command1<span class="w"> </span><span class="p">&amp;</span><span class="w"> </span>command2
 </pre></div>
 </div>
 </div></div>
 </section>
 <section id="conditionally-run-commands">
-<h3>3.3.2. Conditionally Run Commands<a class="headerlink" href="#conditionally-run-commands" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">3.4.2. </span>Conditionally Run Commands<a class="headerlink" href="#conditionally-run-commands" title="Permalink to this heading"></a></h3>
 <p>Commands can be set to run depending on whether the previous command succeeded (exit status = 0) or failed (non-zero exit status). This can allow us to make sequential commands that are more interdependent. If a later command depends on the output from a previous command being created successfully, we can ensure that our second command only runs if that first command successfully created the necessary output. Similarly, can build in error handling to divert commands down a different path if a previous command failed.</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-TWFjT1M=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-5-TWFjT1M=" name="TWFjT1M=" role="tab" tabindex="0">MacOS</button><button aria-controls="panel-5-TGludXg=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-5-TGludXg=" name="TGludXg=" role="tab" tabindex="-1">Linux</button><button aria-controls="panel-5-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-5-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-5-TWFjT1M=" class="sphinx-tabs-panel group-tab" id="panel-5-TWFjT1M=" name="TWFjT1M=" role="tabpanel" tabindex="0"><p>Run command2 only if command1 completed successfuly</p>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-8-TWFjT1M=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-8-TWFjT1M=" name="TWFjT1M=" role="tab" tabindex="0">MacOS</button><button aria-controls="panel-8-TGludXg=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-8-TGludXg=" name="TGludXg=" role="tab" tabindex="-1">Linux</button><button aria-controls="panel-8-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-8-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-8-TWFjT1M=" class="sphinx-tabs-panel group-tab" id="panel-8-TWFjT1M=" name="TWFjT1M=" role="tabpanel" tabindex="0"><p>Run command2 only if command1 completed successfuly</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>command1<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">command</span><span class="w"> </span><span class="m">2</span>
 </pre></div>
 </div>
@@ -220,7 +319,7 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>command1<span class="w"> </span><span class="o">||</span><span class="w"> </span>command2
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-5-TGludXg=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-5-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><p>Run command2 only if command1 completed successfuly</p>
+</div><div aria-labelledby="tab-8-TGludXg=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-8-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><p>Run command2 only if command1 completed successfuly</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>command1<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>command2
 </pre></div>
 </div>
@@ -228,7 +327,7 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>command1<span class="w"> </span><span class="o">||</span><span class="w"> </span>command2
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-5-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-5-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p>Run command2 only if command1 completed successfuly</p>
+</div><div aria-labelledby="tab-8-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-8-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><p>Run command2 only if command1 completed successfuly</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>command1<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>command2
 </pre></div>
 </div>
@@ -238,17 +337,38 @@
 </div>
 </div></div>
 </section>
-<section id="pipe">
-<h3>3.3.3. Pipe<a class="headerlink" href="#pipe" title="Permalink to this heading"></a></h3>
-<p>Pipes are used to pass the output from one command to another program.</p>
 </section>
-<section id="redirect">
-<h3>3.3.4. Redirect<a class="headerlink" href="#redirect" title="Permalink to this heading"></a></h3>
-<p>Redirects are used to pass the output from one command to a file or stream.</p>
+<section id="loops-and-batch-processing">
+<h2><span class="section-number">3.5. </span>Loops and Batch Processing<a class="headerlink" href="#loops-and-batch-processing" title="Permalink to this heading"></a></h2>
+<section id="for-loops">
+<h3><span class="section-number">3.5.1. </span>For Loops<a class="headerlink" href="#for-loops" title="Permalink to this heading"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-9-TWFjT1M=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-9-TWFjT1M=" name="TWFjT1M=" role="tab" tabindex="0">MacOS</button><button aria-controls="panel-9-TGludXg=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-9-TGludXg=" name="TGludXg=" role="tab" tabindex="-1">Linux</button><button aria-controls="panel-9-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-9-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-9-TWFjT1M=" class="sphinx-tabs-panel group-tab" id="panel-9-TWFjT1M=" name="TWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span>x<span class="w"> </span><span class="k">in</span><span class="w"> </span>/home/myUsername/example/*.flac<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>ffmpeg<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$x</span><span class="s2">&quot;</span><span class="w"> </span>-ab<span class="w"> </span>320k<span class="w"> </span>-f<span class="w"> </span>mp3<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">x</span><span class="p">//.flac</span><span class="si">}</span><span class="s2">&quot;</span>.mp3<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">done</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-9-TGludXg=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-9-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span>x<span class="w"> </span><span class="k">in</span><span class="w"> </span>/home/myUsername/example/*.flac<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>ffmpeg<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$x</span><span class="s2">&quot;</span><span class="w"> </span>-ab<span class="w"> </span>320k<span class="w"> </span>-f<span class="w"> </span>mp3<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">x</span><span class="p">//.flac</span><span class="si">}</span><span class="s2">&quot;</span>.mp3<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">done</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-9-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-9-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="s2">&quot;C:\Users\myUsername\example\&quot; %x in (*.flac) do ffmpeg -i &quot;</span>%x<span class="s2">&quot; -ab 320k -f mp3 &quot;</span>%~nx.mp3<span class="s2">&quot;</span>
+</pre></div>
+</div>
+</div></div>
 </section>
 </section>
-<section id="loops">
-<h2>3.4. Loops<a class="headerlink" href="#loops" title="Permalink to this heading"></a></h2>
+<section id="checksumming-files">
+<h2><span class="section-number">3.6. </span>Checksumming Files<a class="headerlink" href="#checksumming-files" title="Permalink to this heading"></a></h2>
+<p>Many operating systems include some default program that can create checksums directly from the command line.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-10-TWFjT1M=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-10-TWFjT1M=" name="TWFjT1M=" role="tab" tabindex="0">MacOS</button><button aria-controls="panel-10-TGludXg=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-10-TGludXg=" name="TGludXg=" role="tab" tabindex="-1">Linux</button><button aria-controls="panel-10-V2luZG93cw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-10-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="-1">Windows</button></div><div aria-labelledby="tab-10-TWFjT1M=" class="sphinx-tabs-panel group-tab" id="panel-10-TWFjT1M=" name="TWFjT1M=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>md5<span class="w"> </span>input_file
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-10-TGludXg=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-10-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>md5sum<span class="w"> </span>input_file
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-10-V2luZG93cw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-10-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>certUtil<span class="w"> </span>-hashfile<span class="w"> </span>input_file<span class="w"> </span>MD5
+</pre></div>
+</div>
+</div></div>
 </section>
 </section>
 

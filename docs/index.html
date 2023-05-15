@@ -48,14 +48,15 @@
 <li class="toctree-l1"><a class="reference internal" href="installation.html">4. Installing FFmpeg</a></li>
 <li class="toctree-l1"><a class="reference internal" href="verifying_installation.html">5. Verifying Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ffmpeg_basics.html">6. FFmpeg Basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="make_a_test_video.html">7. Make a Test Video</a></li>
-<li class="toctree-l1"><a class="reference internal" href="copying_streams.html">8. Copying Streams and Editing Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generating_files.html">7. Generating Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="copying_streams.html">8. Stream Mapping and Editing Metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cutting_and_combining.html">9. Cutting and Combining Video</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pad_and_crop.html">10. Pad, Crop, and Scale Videos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="extract_frames.html">11. Extracting Frames and Streams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image_sequences.html">12. Image Sequences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using_ffprobe.html">13. Using FFprobe</a></li>
 <li class="toctree-l1"><a class="reference internal" href="frame_and_stream_md5s.html">14. Frame and Stream MD5s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generate_spectrograms.html">15. Spectrograms</a></li>
 </ul>
 
         </div>
@@ -100,8 +101,10 @@
 <li class="toctree-l1"><a class="reference internal" href="command_line_basics.html">3. Command Line Basics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="command_line_basics.html#navigation">3.1. Navigation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command_line_basics.html#wildcards">3.2. Wildcards</a></li>
-<li class="toctree-l2"><a class="reference internal" href="command_line_basics.html#combining-commands">3.3. Combining Commands</a></li>
-<li class="toctree-l2"><a class="reference internal" href="command_line_basics.html#loops">3.4. Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command_line_basics.html#redirects-and-pipes">3.3. Redirects and Pipes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command_line_basics.html#combining-commands">3.4. Combining Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command_line_basics.html#loops-and-batch-processing">3.5. Loops and Batch Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command_line_basics.html#checksumming-files">3.6. Checksumming Files</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">4. Installing FFmpeg</a><ul>
@@ -118,17 +121,21 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ffmpeg_basics.html">6. FFmpeg Basics</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ffmpeg_basics.html#basic-ffmpeg-command-syntax">6.1. Basic FFMPEG Command Syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ffmpeg_basics.html#basic-ffmpeg-command-syntax">6.1. Basic FFmpeg Command Syntax</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ffmpeg_basics.html#interpreting-ffmpeg-messages">6.2. Interpreting FFmpeg Messages</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="make_a_test_video.html">7. Make a Test Video</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="make_a_test_video.html#using-ffplay-to-preview-our-output">7.1. Using FFplay to Preview Our Output</a></li>
-<li class="toctree-l2"><a class="reference internal" href="make_a_test_video.html#generate-a-mandelbrot-pattern">7.2. Generate a Mandelbrot Pattern</a></li>
-<li class="toctree-l2"><a class="reference internal" href="make_a_test_video.html#generate-a-test-pattern-video">7.3. Generate a Test Pattern Video</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generating_files.html">7. Generating Files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generating_files.html#using-ffplay-to-preview-outputs">7.1. Using FFplay to Preview Outputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generating_files.html#video">7.2. Video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generating_files.html#audio">7.3. Audio</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="copying_streams.html">8. Copying Streams and Editing Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="copying_streams.html">8. Stream Mapping and Editing Metadata</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="copying_streams.html#stream-mapping">8.1. Stream Mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="copying_streams.html#changing-color-metadata">8.2. Changing Color Metadata</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="cutting_and_combining.html">9. Cutting and Combining Video</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="cutting_and_combining.html#cut-video">9.1. Cut Video</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cutting_and_combining.html#combine-videos">9.2. Combine Videos</a></li>
@@ -139,15 +146,33 @@
 <li class="toctree-l2"><a class="reference internal" href="pad_and_crop.html#pad">10.1. Pad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pad_and_crop.html#crop">10.2. Crop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pad_and_crop.html#scale">10.3. Scale</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pad_and_crop.html#scale-and-pad">10.4. Scale and Pad</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="extract_frames.html">11. Extracting Frames and Streams</a></li>
-<li class="toctree-l1"><a class="reference internal" href="image_sequences.html">12. Image Sequences</a></li>
-<li class="toctree-l1"><a class="reference internal" href="using_ffprobe.html">13. Using FFprobe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extract_frames.html">11. Extracting Frames and Streams</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="extract_frames.html#extract-one-frame">11.1. Extract One Frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extract_frames.html#extract-multiple-frames">11.2. Extract Multiple Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extract_frames.html#extract-all-keyframes">11.3. Extract All Keyframes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extract_frames.html#extract-a-stream">11.4. Extract a Stream</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="image_sequences.html">12. Image Sequences</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="image_sequences.html#loop-a-single-frame">12.1. Loop a Single Frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image_sequences.html#image-sequence-to-video">12.2. Image Sequence to Video</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="using_ffprobe.html">13. Using FFprobe</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="using_ffprobe.html#general-syntax">13.1. General Syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_ffprobe.html#specifying-fields">13.2. Specifying Fields</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="frame_and_stream_md5s.html">14. Frame and Stream MD5s</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="frame_and_stream_md5s.html#framemd5">14.1. FrameMD5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="frame_and_stream_md5s.html#stream-md5">14.2. Stream MD5</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="generate_spectrograms.html">15. Spectrograms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generate_spectrograms.html#using-ffmpeg">15.1. Using FFmpeg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generate_spectrograms.html#using-sox">15.2. Using SoX</a></li>
 </ul>
 </li>
 </ul>

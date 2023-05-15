@@ -49,14 +49,19 @@
 <li class="toctree-l1"><a class="reference internal" href="installation.html">4. Installing FFmpeg</a></li>
 <li class="toctree-l1"><a class="reference internal" href="verifying_installation.html">5. Verifying Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ffmpeg_basics.html">6. FFmpeg Basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="make_a_test_video.html">7. Make a Test Video</a></li>
-<li class="toctree-l1"><a class="reference internal" href="copying_streams.html">8. Copying Streams and Editing Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generating_files.html">7. Generating Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="copying_streams.html">8. Stream Mapping and Editing Metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cutting_and_combining.html">9. Cutting and Combining Video</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pad_and_crop.html">10. Pad, Crop, and Scale Videos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="extract_frames.html">11. Extracting Frames and Streams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image_sequences.html">12. Image Sequences</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">13. Using FFprobe</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">13. Using FFprobe</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#general-syntax">13.1. General Syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#specifying-fields">13.2. Specifying Fields</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="frame_and_stream_md5s.html">14. Frame and Stream MD5s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generate_spectrograms.html">15. Spectrograms</a></li>
 </ul>
 
         </div>
@@ -73,7 +78,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">13. Using FFprobe</li>
+      <li class="breadcrumb-item active"><span class="section-number">13. </span>Using FFprobe</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/jycm205/Intro-to-FFMPEG-Workshop/blob/main/docsrc/source/using_ffprobe.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -84,7 +89,20 @@
            <div itemprop="articleBody">
              
   <section id="using-ffprobe">
-<h1>13. Using FFprobe<a class="headerlink" href="#using-ffprobe" title="Permalink to this heading"></a></h1>
+<h1><span class="section-number">13. </span>Using FFprobe<a class="headerlink" href="#using-ffprobe" title="Permalink to this heading"></a></h1>
+<section id="general-syntax">
+<h2><span class="section-number">13.1. </span>General Syntax<a class="headerlink" href="#general-syntax" title="Permalink to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffprobe<span class="w"> </span>-show_streams<span class="w"> </span>-show_format<span class="w"> </span>input_file
+</pre></div>
+</div>
+</section>
+<section id="specifying-fields">
+<h2><span class="section-number">13.2. </span>Specifying Fields<a class="headerlink" href="#specifying-fields" title="Permalink to this heading"></a></h2>
+<p>The following example uses the <code class="docutils literal notranslate"><span class="pre">-show_entries</span></code> command to specify a subset of stream fields that we want to look at. Note that <code class="docutils literal notranslate"><span class="pre">-loglevel</span> <span class="pre">error</span></code> is used to reduce the verbosity of FFprobe’s output so it is easier to read. <code class="docutils literal notranslate"><span class="pre">-of</span> <span class="pre">default=noprint_wrappers=1</span></code> is also used to remove some of the formatting from the output and make it easier to read.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffprobe<span class="w"> </span>-loglevel<span class="w"> </span>error<span class="w"> </span>-show_entries<span class="w"> </span><span class="nv">stream</span><span class="o">=</span>color_range,color_space,color_transfer,color_primaries<span class="w"> </span>-of<span class="w"> </span><span class="nv">default</span><span class="o">=</span><span class="nv">noprint_wrappers</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>input_file
+</pre></div>
+</div>
+</section>
 </section>
 
 

@@ -1,12 +1,12 @@
 #######################
-3. Command Line Basics
+Command Line Basics
 #######################
 
-**************************
-3.1. Navigation
-**************************
+********************************
+Navigation
+********************************
 
-3.1.1. whoami
+whoami
 ========================================
 
 Prints the user that is you are currently executing commands as.
@@ -14,20 +14,20 @@ Prints the user that is you are currently executing commands as.
 .. tabs::
    .. group-tab:: MacOS
       .. code-block:: bash
-      
+         
          whoami
          
    .. group-tab:: Linux
       .. code-block:: bash
-      
+         
          whoami
          
    .. group-tab:: Windows
       .. code-block:: bash
-      
+         
          whoami
-
-3.1.2. Print Working Directory
+         
+Print Working Directory
 ========================================
 
 Prints the full path of the current "working" directory. This is where you are currently running commands from.
@@ -48,28 +48,98 @@ Prints the full path of the current "working" directory. This is where you are c
       
          cd
 
-3.1.3. List Folder Contents
+Change Directories
+========================================
+
+We can navigate folders on our computer from the command line using the ``cd`` command similar to how we would in a GUI file browser.
+
+.. tabs::
+   .. group-tab:: MacOS
+
+      Change directories to Downloads folder.
+
+      .. code-block:: bash
+      
+         cd /home/myUsername/Downloads
+
+      Change directories to current User's home directory.
+
+      .. code-block:: bash
+      
+         cd ~
+
+      Go back one folder level.
+
+      .. code-block:: bash
+
+         cd ..
+         
+
+   .. group-tab:: Linux
+
+      Change directories to Downloads folder.
+
+      .. code-block:: bash
+      
+         cd /home/myUsername/Downloads
+
+      Change directories to current User's home directory.
+
+      .. code-block:: bash
+      
+         cd ~
+
+      Go back one folder level.
+
+      .. code-block:: bash
+
+         cd ..
+         
+
+   .. group-tab:: Windows
+
+      Change directories to Downloads folder.
+
+      .. code-block:: bash
+      
+         cd C:\Downloads
+         
+      When changing between different drives, include `/d`.
+
+      .. code-block:: bash
+
+         cd /d D:\Directory
+
+      Go back one folder level.
+
+      .. code-block:: bash
+
+         cd ..
+
+
+List Folder Contents
 ========================================
 
 Lists the contents of the current working directory. If you follow the command with the path to a different directory, it will list the contents of that directory instead.
 
 .. tabs::
    .. group-tab:: MacOS
-   
+
       List current folder contents
-      
+
       .. code-block:: bash
       
          ls
          
       List contents of Documents folder
-      
+
       .. code-block:: bash
       
          ls "/home/myUsername/Documents"
          
+
    .. group-tab:: Linux
-   
+
       List current folder contents
       
       .. code-block:: bash
@@ -77,27 +147,28 @@ Lists the contents of the current working directory. If you follow the command w
          ls
          
       List contents of Documents folder
-      
+
       .. code-block:: bash
       
          ls "/home/myUsername/Documents"
          
+
    .. group-tab:: Windows
-   
+
       List current folder contents
-      
+
       .. code-block:: bash
       
          dir
          
       List contents of My Documents folder
-      
+
       .. code-block:: bash
       
          dir "C:\Users\myUsername\Documents"
          
 
-3.1.4. Notes About Quotes
+Notes About Quotes
 ========================================
 
 The command line uses spaces to separate various parts of commands. As a result, file and folder paths that contain spaces need to be handled in special ways to ensure that those spaces are correctly read as part of a larger string of text rather than separators within the command. A common way to accomplish this is to enclose the path in single (``''``) or double (``""``) quotes.
@@ -108,11 +179,13 @@ The command line uses spaces to separate various parts of commands. As a result,
       
          cd "/home/myUsername/path with spaces"
          
+
    .. group-tab:: Linux
       .. code-block:: bash
       
          cd "/home/myUsername/path with spaces"
          
+
    .. group-tab:: Windows
       .. code-block:: bash
       
@@ -124,16 +197,92 @@ The command line uses spaces to separate various parts of commands. As a result,
 
 - Be careful when copying quoted paths/filenames from certain sources, such as Word documents or spreadsheets, as these types of documents may format text in ways that can cause issues for commands. For example, the following single (``‘’``) and double (``“”``) quotes will NOT work.
 
-**************************
-3.2. Wildcards
-**************************
-text
+********************************
+Wildcards
+********************************
 
-**************************
-3.3. Combining Commands
-**************************
+Certain special characters (``?``, ``!``, ``[]``, ``*``) are used to match patterns. This can be very useful when trying to run a command on a certain subset of files or folders that share certain identifying characteristics. One example of a very common wildcard is ``*``, which matches any combination of characters.
 
-3.3.1. Performing Commands Sequentially
+.. tabs::
+   .. group-tab:: MacOS
+
+      List all .mp4 files in the current directory
+
+      .. code-block:: bash
+      
+         ls *.mov
+
+      List all .mp3 files in every folder in the Music directory
+
+      .. code-block:: bash
+      
+         ls /home/myUsername/Music/*/*.mp3
+
+
+   .. group-tab:: Linux
+
+      List all .mp4 files in the current directory.
+
+      .. code-block:: bash
+      
+         ls *.mp4
+
+      List all .mp3 files in every folder in the Music directory.
+
+      .. code-block:: bash
+      
+         ls /home/myUsername/Music/*/*.mp3
+
+
+   .. group-tab:: Windows
+
+      List all .mp4 files in the current directory.
+
+      .. code-block:: bash
+      
+         dir *.mp4
+         
+      List all .mp3 files in every folder in the Music directory.
+
+      .. code-block:: bash
+      
+         dir C:\Users\myUsername\Music\*\*.mp3
+
+********************************
+Redirects and Pipes
+********************************
+
+Pipe
+========================================
+
+Pipes (``|``) are used to pass the output from one command to another program.
+
+Redirect
+========================================
+
+Redirects (``>``, ``<`` or ``>>``, ``<<`` to append) are used to pass the output from one command to a file or stream.
+
+.. tabs::
+   .. group-tab:: MacOS
+      .. code-block:: bash
+      
+         ls > file_list.txt 
+
+   .. group-tab:: Linux
+      .. code-block:: bash
+      
+         ls > file_list.txt
+
+   .. group-tab:: Windows
+      .. code-block:: bash
+      
+         dir > file_list.txt
+
+********************************
+Combining Commands
+********************************
+
+Performing Commands Sequentially
 ========================================
 
 Commands can be set to execute one after another. This allows us to queue up a number of commands to run in sequence.
@@ -154,7 +303,7 @@ Commands can be set to execute one after another. This allows us to queue up a n
       
          command1 & command2
 
-3.3.2. Conditionally Run Commands
+Conditionally Run Commands
 ========================================
 
 Commands can be set to run depending on whether the previous command succeeded (exit status = 0) or failed (non-zero exit status). This can allow us to make sequential commands that are more interdependent. If a later command depends on the output from a previous command being created successfully, we can ensure that our second command only runs if that first command successfully created the necessary output. Similarly, can build in error handling to divert commands down a different path if a previous command failed. 
@@ -202,16 +351,47 @@ Commands can be set to run depending on whether the previous command succeeded (
       
          command1 || command2
 
-3.3.3. Pipe
+********************************
+Loops and Batch Processing
+********************************
+
+For Loops
 ========================================
 
-Pipes are used to pass the output from one command to another program.
+.. tabs::
+   .. group-tab:: MacOS
+      .. code-block:: bash
+      
+         for x in /home/myUsername/example/*.flac ; do ffmpeg -i "$x" -ab 320k -f mp3 "${x//.flac}".mp3 ; done
+         
+   .. group-tab:: Linux
+      .. code-block:: bash
+      
+         for x in /home/myUsername/example/*.flac ; do ffmpeg -i "$x" -ab 320k -f mp3 "${x//.flac}".mp3 ; done
+         
+   .. group-tab:: Windows
+      .. code-block:: bash
+      
+         for "C:\Users\myUsername\example\" %x in (*.flac) do ffmpeg -i "%x" -ab 320k -f mp3 "%~nx.mp3"
 
-3.3.4. Redirect
-========================================
+********************************
+Checksumming Files
+********************************
 
-Redirects are used to pass the output from one command to a file or stream.
+Many operating systems include some default program that can create checksums directly from the command line.
 
-**************************
-3.4. Loops
-**************************
+.. tabs::
+   .. group-tab:: MacOS
+      .. code-block:: bash
+      
+         md5 input_file
+         
+   .. group-tab:: Linux
+      .. code-block:: bash
+      
+         md5sum input_file
+         
+   .. group-tab:: Windows
+      .. code-block:: bash
+      
+         certUtil -hashfile input_file MD5

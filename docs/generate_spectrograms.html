@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>12. Image Sequences &mdash; Intro-to-FFMPEG-Workshop  documentation</title>
+  <title>15. Spectrograms &mdash; Intro-to-FFMPEG-Workshop  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/tabs.css" type="text/css" />
@@ -18,8 +18,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="13. Using FFprobe" href="using_ffprobe.html" />
-    <link rel="prev" title="11. Extracting Frames and Streams" href="extract_frames.html" /> 
+    <link rel="prev" title="14. Frame and Stream MD5s" href="frame_and_stream_md5s.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -54,14 +53,18 @@
 <li class="toctree-l1"><a class="reference internal" href="cutting_and_combining.html">9. Cutting and Combining Video</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pad_and_crop.html">10. Pad, Crop, and Scale Videos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="extract_frames.html">11. Extracting Frames and Streams</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">12. Image Sequences</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#loop-a-single-frame">12.1. Loop a Single Frame</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#image-sequence-to-video">12.2. Image Sequence to Video</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="image_sequences.html">12. Image Sequences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using_ffprobe.html">13. Using FFprobe</a></li>
 <li class="toctree-l1"><a class="reference internal" href="frame_and_stream_md5s.html">14. Frame and Stream MD5s</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generate_spectrograms.html">15. Spectrograms</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">15. Spectrograms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#using-ffmpeg">15.1. Using FFmpeg</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#using-ffplay">15.1.1. Using FFplay</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#outputting-to-a-file">15.1.2. Outputting to a File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#using-sox">15.2. Using SoX</a></li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -78,9 +81,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active"><span class="section-number">12. </span>Image Sequences</li>
+      <li class="breadcrumb-item active"><span class="section-number">15. </span>Spectrograms</li>
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/jycm205/Intro-to-FFMPEG-Workshop/blob/main/docsrc/source/image_sequences.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/jycm205/Intro-to-FFMPEG-Workshop/blob/main/docsrc/source/generate_spectrograms.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -88,24 +91,38 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="image-sequences">
-<h1><span class="section-number">12. </span>Image Sequences<a class="headerlink" href="#image-sequences" title="Permalink to this heading"></a></h1>
-<section id="loop-a-single-frame">
-<h2><span class="section-number">12.1. </span>Loop a Single Frame<a class="headerlink" href="#loop-a-single-frame" title="Permalink to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-framerate<span class="w"> </span><span class="m">24</span><span class="w"> </span>-loop<span class="w"> </span><span class="m">1</span><span class="w"> </span>-i<span class="w"> </span>input.png<span class="w"> </span>-t<span class="w"> </span><span class="m">10</span><span class="w"> </span>-c:v<span class="w"> </span>libx264<span class="w"> </span>-pix_fmt<span class="w"> </span>yuv420p<span class="w"> </span>output.mp4
+  <section id="spectrograms">
+<h1><span class="section-number">15. </span>Spectrograms<a class="headerlink" href="#spectrograms" title="Permalink to this heading"></a></h1>
+<section id="using-ffmpeg">
+<h2><span class="section-number">15.1. </span>Using FFmpeg<a class="headerlink" href="#using-ffmpeg" title="Permalink to this heading"></a></h2>
+<p>Documentation on FFmpeg’s spectrogram filter can be found <a class="reference external" href="https://ffmpeg.org/ffmpeg-filters.html#showspectrum-1">HERE</a>.</p>
+<section id="using-ffplay">
+<h3><span class="section-number">15.1.1. </span>Using FFplay<a class="headerlink" href="#using-ffplay" title="Permalink to this heading"></a></h3>
+<p>The following command creates a 1920x1080 spectrogram that scrolls as the audio plays.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffplay<span class="w"> </span>-f<span class="w"> </span>lavfi<span class="w"> </span><span class="s2">&quot;amovie=&#39;input.wav&#39;, asplit [a][out1]; [a] showspectrum=mode=separate:color=rainbow:slide=scroll:scale=lin:size=1920x1080 [out0]&quot;</span>
 </pre></div>
 </div>
-<p>This can be tested using the image below:</p>
-<img alt="_images/ffmpeg_example_file.png" src="_images/ffmpeg_example_file.png" />
 </section>
-<section id="image-sequence-to-video">
-<h2><span class="section-number">12.2. </span>Image Sequence to Video<a class="headerlink" href="#image-sequence-to-video" title="Permalink to this heading"></a></h2>
-<p>Method 1:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-framerate<span class="w"> </span><span class="m">24</span><span class="w"> </span>-pattern_type<span class="w"> </span>glob<span class="w"> </span>-i<span class="w"> </span>*.png<span class="w"> </span>-c:v<span class="w"> </span>libx264<span class="w"> </span>-pix_fmt<span class="w"> </span>yuv420p<span class="w"> </span>output.mp4
+<section id="outputting-to-a-file">
+<h3><span class="section-number">15.1.2. </span>Outputting to a File<a class="headerlink" href="#outputting-to-a-file" title="Permalink to this heading"></a></h3>
+<p>For mono audio:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>input.wav<span class="w"> </span>-lavfi<span class="w"> </span><span class="o">[</span>a:0<span class="o">]</span>showspectrumpic<span class="w"> </span>output.png
 </pre></div>
 </div>
-<p>Method 2:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-framerate<span class="w"> </span><span class="m">24</span><span class="w"> </span>-i<span class="w"> </span>%06d.png<span class="w"> </span>-c:v<span class="w"> </span>libx264<span class="w"> </span>-pix_fmt<span class="w"> </span>yuv420p<span class="w"> </span>output.mp4
+<p>For multi-channel audio:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>input.wav<span class="w"> </span>-lavfi<span class="w"> </span><span class="o">[</span>a:0<span class="o">]</span><span class="nv">showspectrumpic</span><span class="o">=</span><span class="nv">mode</span><span class="o">=</span>separate<span class="w"> </span>output.png
+</pre></div>
+</div>
+<p>Changing the Orientation:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>input.wav<span class="w"> </span>-lavfi<span class="w"> </span><span class="nv">showspectrumpic</span><span class="o">=</span><span class="nv">mode</span><span class="o">=</span>separate:orientation<span class="o">=</span><span class="m">1</span><span class="w"> </span>output.png
+</pre></div>
+</div>
+</section>
+</section>
+<section id="using-sox">
+<h2><span class="section-number">15.2. </span>Using SoX<a class="headerlink" href="#using-sox" title="Permalink to this heading"></a></h2>
+<p>If installed, SoX can be used as an alternative to FFmpeg for generating spectrograms.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sox<span class="w"> </span>input.wav<span class="w"> </span>-n<span class="w"> </span>spectrogram<span class="w"> </span>-o<span class="w"> </span>output.png
 </pre></div>
 </div>
 </section>
@@ -115,8 +132,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="extract_frames.html" class="btn btn-neutral float-left" title="11. Extracting Frames and Streams" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="using_ffprobe.html" class="btn btn-neutral float-right" title="13. Using FFprobe" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="frame_and_stream_md5s.html" class="btn btn-neutral float-left" title="14. Frame and Stream MD5s" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

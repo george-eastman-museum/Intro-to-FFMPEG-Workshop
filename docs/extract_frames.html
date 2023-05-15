@@ -49,14 +49,21 @@
 <li class="toctree-l1"><a class="reference internal" href="installation.html">4. Installing FFmpeg</a></li>
 <li class="toctree-l1"><a class="reference internal" href="verifying_installation.html">5. Verifying Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ffmpeg_basics.html">6. FFmpeg Basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="make_a_test_video.html">7. Make a Test Video</a></li>
-<li class="toctree-l1"><a class="reference internal" href="copying_streams.html">8. Copying Streams and Editing Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generating_files.html">7. Generating Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="copying_streams.html">8. Stream Mapping and Editing Metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cutting_and_combining.html">9. Cutting and Combining Video</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pad_and_crop.html">10. Pad, Crop, and Scale Videos</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">11. Extracting Frames and Streams</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">11. Extracting Frames and Streams</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#extract-one-frame">11.1. Extract One Frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extract-multiple-frames">11.2. Extract Multiple Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extract-all-keyframes">11.3. Extract All Keyframes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extract-a-stream">11.4. Extract a Stream</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="image_sequences.html">12. Image Sequences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using_ffprobe.html">13. Using FFprobe</a></li>
 <li class="toctree-l1"><a class="reference internal" href="frame_and_stream_md5s.html">14. Frame and Stream MD5s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generate_spectrograms.html">15. Spectrograms</a></li>
 </ul>
 
         </div>
@@ -73,7 +80,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">11. Extracting Frames and Streams</li>
+      <li class="breadcrumb-item active"><span class="section-number">11. </span>Extracting Frames and Streams</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/jycm205/Intro-to-FFMPEG-Workshop/blob/main/docsrc/source/extract_frames.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -84,18 +91,37 @@
            <div itemprop="articleBody">
              
   <section id="extracting-frames-and-streams">
-<h1>11. Extracting Frames and Streams<a class="headerlink" href="#extracting-frames-and-streams" title="Permalink to this heading"></a></h1>
-<dl class="simple">
-<dt>extract one frame:</dt><dd><p>ffmpeg -i input_file -vf “select=gte(n,frame_number)” -vframes 1 output_file.png</p>
-</dd>
-<dt>Extract multiple frames:</dt><dd><p>ffmpeg -i input_file -vf “select=eq(n,frame_number1)+eq(n,frame_number2)+eq(n,frame_number3)” -fps_mode passthrough output_file_%03d.png</p>
-</dd>
-<dt>extract all keyframes:</dt><dd><p>ffmpeg -i input_file -vf “select=eq(pict_type,I)” -fps_mode passthrough output_file-%03d.png</p>
-</dd>
-</dl>
-<p>-fps_mode passthrough : If using an older version of ffmpeg, you may need to use -vsync 0 instead. Here we are telling ffmpeg to passthrough the original input framerate. By default this is set to auto, which could result in dropped or skipped frames that would cause inaccurate results when trying to extract specific frames.</p>
-<p>Extract exact copy of audio (example uses aac):
-ffmpeg -i input.mp4 -vn -c:a copy output.aac</p>
+<h1><span class="section-number">11. </span>Extracting Frames and Streams<a class="headerlink" href="#extracting-frames-and-streams" title="Permalink to this heading"></a></h1>
+<p>Note about using <code class="docutils literal notranslate"><span class="pre">-fps_mode</span> <span class="pre">passthrough</span></code> : If using an older version of ffmpeg, you may need to use <code class="docutils literal notranslate"><span class="pre">-vsync</span> <span class="pre">0</span></code> instead. This is telling FFmpeg to passthrough the original input framerate. By default this is set to <code class="docutils literal notranslate"><span class="pre">auto</span></code>, which could result in dropped or skipped frames that would cause inaccurate results when trying to extract specific frames.</p>
+<section id="extract-one-frame">
+<h2><span class="section-number">11.1. </span>Extract One Frame<a class="headerlink" href="#extract-one-frame" title="Permalink to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>input_file<span class="w"> </span>-vf<span class="w"> </span><span class="s2">&quot;select=gte(n\,frame_number)&quot;</span><span class="w"> </span>-vframes<span class="w"> </span><span class="m">1</span><span class="w"> </span>output_file.png
+</pre></div>
+</div>
+</section>
+<section id="extract-multiple-frames">
+<h2><span class="section-number">11.2. </span>Extract Multiple Frames<a class="headerlink" href="#extract-multiple-frames" title="Permalink to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>input_file<span class="w"> </span>-vf<span class="w"> </span><span class="s2">&quot;select=eq(n\,frame_number1)+eq(n\,frame_number2)+eq(n\,frame_number3)&quot;</span><span class="w"> </span>-fps_mode<span class="w"> </span>passthrough<span class="w"> </span>output_file_%03d.png
+</pre></div>
+</div>
+</section>
+<section id="extract-all-keyframes">
+<h2><span class="section-number">11.3. </span>Extract All Keyframes<a class="headerlink" href="#extract-all-keyframes" title="Permalink to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>input_file<span class="w"> </span>-vf<span class="w"> </span><span class="s2">&quot;select=eq(pict_type\,I)&quot;</span><span class="w"> </span>-fps_mode<span class="w"> </span>passthrough<span class="w"> </span>output_file-%03d.png
+</pre></div>
+</div>
+</section>
+<section id="extract-a-stream">
+<h2><span class="section-number">11.4. </span>Extract a Stream<a class="headerlink" href="#extract-a-stream" title="Permalink to this heading"></a></h2>
+<p>If the video only has a single video and audio track, we can simply exclude the video track.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>input.mkv<span class="w"> </span>-vn<span class="w"> </span>-c:a<span class="w"> </span>copy<span class="w"> </span>output.wav
+</pre></div>
+</div>
+<p>For more complex videos, we can use <code class="docutils literal notranslate"><span class="pre">-map</span></code> to identify the exact audio stream that we want to extract. The following example extracts the primary audio track:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>input.mkv<span class="w"> </span>-map<span class="w"> </span>a:0<span class="w"> </span>-c:a<span class="w"> </span>copy<span class="w"> </span>output.wav
+</pre></div>
+</div>
+</section>
 </section>
 
 

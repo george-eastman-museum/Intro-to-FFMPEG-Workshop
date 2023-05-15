@@ -1,10 +1,16 @@
 #######################
-6. FFmpeg Basics
+FFmpeg Basics
 #######################
 
 **********************************
-6.1. Basic FFMPEG Command Syntax
+Basic FFmpeg Command Syntax
 **********************************
+
+FFmpeg command structure:
+
+.. code-block:: bash
+
+   ffmpeg [global_options] {[input_file_options] -i input} {[output_file_options] output}
 
 A simple FFmpeg command for transcoding to an H.264 file with AAC audio might look something like this:
 
@@ -15,7 +21,6 @@ A simple FFmpeg command for transcoding to an H.264 file with AAC audio might lo
 Let's look at what each part of this command does.
 
 ``ffmpeg``
-=============================================
 
 - This is where we tell the command line which program we want to run.
 
@@ -24,7 +29,6 @@ Let's look at what each part of this command does.
 - If you have one of the static builds of FFmpeg, you could also use the full path to that static build file here (just drag and drop the "ffmpeg" file on the command line!) or ``cd`` to that directory and run commands from there.
 
 ``-i input_file``
-=============================================
 
 - Input files are indicated using ``-i``.
 
@@ -33,13 +37,12 @@ Let's look at what each part of this command does.
 - There are some cases where you may want to specify multiple inputs in a single command. You can repeat the ``-i`` command multiple times to accomplish this (i.e. ``-i input_1.mov -i input_2.wav``).
 
 ``-c:v libx264 -crf 18 -preset slow``
-=============================================
 
 - ``-c:v`` indicates that we are specifying video codec settings that we want to use for our output.
 
 - This is followed by the video encoder that we want to use. In this example we are using ``libx264``, which is the name that FFmpeg uses to call the free and open source H.264 encoder library, x264.
 
-- Some codecs may have multiple encoders available to choose from. For example, FFmpeg has two encoders to choose from for ProRes (``prores-ks`` and ``prores-aw``).
+- Some codecs may have multiple encoders available to choose from. For example, FFmpeg has three encoders to choose from for ProRes (``prores``, ``prores_ks`` and ``prores_aw``).
 
 - ``-crf 18 -preset slow`` are encoding settings specific to the x264 encoding library that configure some of the compression settings for the output.
 
@@ -48,7 +51,6 @@ Let's look at what each part of this command does.
 - Encoding settings will vary from one codec to another, so it's always a good idea to read the documentation and look at some examples to get a better idea of the exact settings you'll want to use.
 
 ``-c:a aac -b:a 256k``
-=============================================
 
 - ``-c:a`` indicates that we are specifying audio codec settings that we want to use for our output. Notice that this is similar to the structure of what we had done for the video codec, but with a different codec library and different settings.
 
@@ -65,7 +67,6 @@ Let's look at what each part of this command does.
 - If we had left out any audio codec settings, FFmpeg would have chosen a default setting for us based on the output format we specified.
 
 ``output_file``
-=============================================
 
 - This part of the command specifies the full path to our output file.
 
@@ -75,12 +76,12 @@ Let's look at what each part of this command does.
 
 
 **********************************
-6.2. Interpreting FFmpeg Messages
+Interpreting FFmpeg Messages
 **********************************
 
 By default FFmpeg will output a lot of information to the command line as it processes files.
 
-6.2.1. Progress
+Progress
 =============================================
 
 .. image:: images/ffmpeg-progress_output.png
@@ -97,7 +98,7 @@ By default FFmpeg will output a lot of information to the command line as it pro
 
 - FFmpeg may output other information such as errors or warnings to the command line as well.
 
-6.2.2. Warnings
+Warnings
 =============================================
 
 - Warnings are indicated by yellow text in FFmpeg's output.
@@ -108,7 +109,7 @@ By default FFmpeg will output a lot of information to the command line as it pro
 
 - For example, unsupported timecode streams in an input will often cause warnings.
 
-6.2.3. Errors
+Errors
 =============================================
 
 - Errors are indicated by red text in FFmpeg's output.
@@ -117,7 +118,7 @@ By default FFmpeg will output a lot of information to the command line as it pro
 
 - For example, FFmpeg will output an error message if you try to use ``-c:v copy`` with a video filter (``-vf``) because these two settings contradict one another.
 
-6.2.4. Changing Verbosity
+Changing Verbosity
 =============================================
 
 - FFmpeg, FFprobe, and FFplay have various settings for adjusting the amount of information that gets output to the command line as they runs.
@@ -128,7 +129,7 @@ By default FFmpeg will output a lot of information to the command line as it pro
 
 - ``ffmpeg -loglevel quiet -i input_file output_file`` can be used to prevent FFmpeg from writing anything to the command line while running.
 
-6.2.5. Overwriting Files
+Overwriting Files
 =============================================
 
 - If your output file already exists, FFmpeg will prompt you asking if you want to overwrite the existing file before it proceeds.

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>8. Copying Streams and Editing Metadata &mdash; Intro-to-FFMPEG-Workshop  documentation</title>
+  <title>8. Stream Mapping and Editing Metadata &mdash; Intro-to-FFMPEG-Workshop  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/tabs.css" type="text/css" />
@@ -19,7 +19,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="9. Cutting and Combining Video" href="cutting_and_combining.html" />
-    <link rel="prev" title="7. Make a Test Video" href="make_a_test_video.html" /> 
+    <link rel="prev" title="7. Generating Files" href="generating_files.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -49,14 +49,19 @@
 <li class="toctree-l1"><a class="reference internal" href="installation.html">4. Installing FFmpeg</a></li>
 <li class="toctree-l1"><a class="reference internal" href="verifying_installation.html">5. Verifying Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ffmpeg_basics.html">6. FFmpeg Basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="make_a_test_video.html">7. Make a Test Video</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">8. Copying Streams and Editing Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generating_files.html">7. Generating Files</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">8. Stream Mapping and Editing Metadata</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#stream-mapping">8.1. Stream Mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#changing-color-metadata">8.2. Changing Color Metadata</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="cutting_and_combining.html">9. Cutting and Combining Video</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pad_and_crop.html">10. Pad, Crop, and Scale Videos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="extract_frames.html">11. Extracting Frames and Streams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image_sequences.html">12. Image Sequences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using_ffprobe.html">13. Using FFprobe</a></li>
 <li class="toctree-l1"><a class="reference internal" href="frame_and_stream_md5s.html">14. Frame and Stream MD5s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generate_spectrograms.html">15. Spectrograms</a></li>
 </ul>
 
         </div>
@@ -73,7 +78,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">8. Copying Streams and Editing Metadata</li>
+      <li class="breadcrumb-item active"><span class="section-number">8. </span>Stream Mapping and Editing Metadata</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/jycm205/Intro-to-FFMPEG-Workshop/blob/main/docsrc/source/copying_streams.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -83,15 +88,37 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="copying-streams-and-editing-metadata">
-<h1>8. Copying Streams and Editing Metadata<a class="headerlink" href="#copying-streams-and-editing-metadata" title="Permalink to this heading"></a></h1>
+  <section id="stream-mapping-and-editing-metadata">
+<h1><span class="section-number">8. </span>Stream Mapping and Editing Metadata<a class="headerlink" href="#stream-mapping-and-editing-metadata" title="Permalink to this heading"></a></h1>
+<p>Streams can be copied when performing actions that do not require re-encoding. This includes things like changing metadata, removing or adding streams, or cutting/combining videos on intra-compressed frames.</p>
+<p>Rather than specifying an encoder for the output, we can simply use <code class="docutils literal notranslate"><span class="pre">-c:v</span> <span class="pre">copy</span></code> to copy a video stream and <code class="docutils literal notranslate"><span class="pre">-c:a</span> <span class="pre">copy</span></code> to copy an audio stream. <code class="docutils literal notranslate"><span class="pre">-map</span> <span class="pre">0</span> <span class="pre">-c</span> <span class="pre">copy</span></code> will also copy all streams.</p>
+<section id="stream-mapping">
+<h2><span class="section-number">8.1. </span>Stream Mapping<a class="headerlink" href="#stream-mapping" title="Permalink to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">-map</span></code> command is useful for singling out particular streams within complex video files. Documentation about the <code class="docutils literal notranslate"><span class="pre">-map</span></code> command can be found <a class="reference external" href="https://trac.ffmpeg.org/wiki/Map">HERE</a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">-map</span> <span class="pre">0</span></code></p>
+<p>This is used to indicate all streams from the first input.</p>
+<p><code class="docutils literal notranslate"><span class="pre">-map</span> <span class="pre">0:a:1</span></code></p>
+<ul class="simple">
+<li><p>The first number in the map command indicates the input, with <code class="docutils literal notranslate"><span class="pre">0</span></code> corresponding to the first input. If passing multiple inputs to FFmpeg in a single command, the <code class="docutils literal notranslate"><span class="pre">-map</span></code> command  can be repeated to map streams from various inputs into the final output.</p></li>
+<li><p>The following letter identifies the type of stream (<code class="docutils literal notranslate"><span class="pre">a</span></code> for audio, <code class="docutils literal notranslate"><span class="pre">v</span></code> for video, <code class="docutils literal notranslate"><span class="pre">s</span></code> for subtitle, etc.)</p></li>
+<li><p>The final number indicates that stream’s number for that type of stream within the container, starting from <code class="docutils literal notranslate"><span class="pre">0</span></code>. For example, <code class="docutils literal notranslate"><span class="pre">a:1</span></code> would be the second audio stream in the file.</p></li>
+</ul>
+</section>
+<section id="changing-color-metadata">
+<h2><span class="section-number">8.2. </span>Changing Color Metadata<a class="headerlink" href="#changing-color-metadata" title="Permalink to this heading"></a></h2>
+<p>The sample video files created in Section 7 did not include any commands to tag how the color should be decoded in the videos. Adding this information now does not require re-encoding the files.</p>
+<p>The following command will update the Color Range, Color Primaries, Transfer Characteristics, and Color Space to be read as limited range Rec. 709 video in addition to re-wrapping the H.264 encoding in an mp4 wrapper.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>input_file.mov<span class="w"> </span>-c:v<span class="w"> </span>copy<span class="w"> </span>-color_range<span class="w"> </span>tv<span class="w"> </span>-colorspace<span class="w"> </span>bt709<span class="w"> </span>-color_trc<span class="w"> </span>bt709<span class="w"> </span>-color_primaries<span class="w"> </span>bt709<span class="w"> </span>output_file.mp4
+</pre></div>
+</div>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="make_a_test_video.html" class="btn btn-neutral float-left" title="7. Make a Test Video" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="generating_files.html" class="btn btn-neutral float-left" title="7. Generating Files" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="cutting_and_combining.html" class="btn btn-neutral float-right" title="9. Cutting and Combining Video" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

@@ -18,6 +18,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="15. Spectrograms" href="generate_spectrograms.html" />
     <link rel="prev" title="13. Using FFprobe" href="using_ffprobe.html" /> 
 </head>
 
@@ -48,8 +49,8 @@
 <li class="toctree-l1"><a class="reference internal" href="installation.html">4. Installing FFmpeg</a></li>
 <li class="toctree-l1"><a class="reference internal" href="verifying_installation.html">5. Verifying Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ffmpeg_basics.html">6. FFmpeg Basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="make_a_test_video.html">7. Make a Test Video</a></li>
-<li class="toctree-l1"><a class="reference internal" href="copying_streams.html">8. Copying Streams and Editing Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generating_files.html">7. Generating Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="copying_streams.html">8. Stream Mapping and Editing Metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cutting_and_combining.html">9. Cutting and Combining Video</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pad_and_crop.html">10. Pad, Crop, and Scale Videos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="extract_frames.html">11. Extracting Frames and Streams</a></li>
@@ -60,6 +61,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#stream-md5">14.2. Stream MD5</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="generate_spectrograms.html">15. Spectrograms</a></li>
 </ul>
 
         </div>
@@ -76,7 +78,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">14. Frame and Stream MD5s</li>
+      <li class="breadcrumb-item active"><span class="section-number">14. </span>Frame and Stream MD5s</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/jycm205/Intro-to-FFMPEG-Workshop/blob/main/docsrc/source/frame_and_stream_md5s.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -87,19 +89,23 @@
            <div itemprop="articleBody">
              
   <section id="frame-and-stream-md5s">
-<h1>14. Frame and Stream MD5s<a class="headerlink" href="#frame-and-stream-md5s" title="Permalink to this heading"></a></h1>
+<h1><span class="section-number">14. </span>Frame and Stream MD5s<a class="headerlink" href="#frame-and-stream-md5s" title="Permalink to this heading"></a></h1>
+<p>FFmpeg has the ability to create MD5s of streams and frames. This can be especially helpful when attempting to determine if a transcode or stream copy is reversible/lossless. It also allows us to examine a stream’s integrity at a granular level and better understand how different encodings of the same file may differ.</p>
 <section id="framemd5">
-<h2>14.1. FrameMD5<a class="headerlink" href="#framemd5" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">14.1. </span>FrameMD5<a class="headerlink" href="#framemd5" title="Permalink to this heading"></a></h2>
+<p>Documentation about framemd5s can be found <a class="reference external" href="https://trac.ffmpeg.org/wiki/framemd5%20Intro%20and%20HowTo">HERE</a>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>input_file.mov<span class="w"> </span>-f<span class="w"> </span>framemd5<span class="w"> </span>output_file.framemd5
 </pre></div>
 </div>
 </section>
 <section id="stream-md5">
-<h2>14.2. Stream MD5<a class="headerlink" href="#stream-md5" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">14.2. </span>Stream MD5<a class="headerlink" href="#stream-md5" title="Permalink to this heading"></a></h2>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">-map</span></code> command to select the primary video track:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-loglevel<span class="w"> </span>quiet<span class="w"> </span>-i<span class="w"> </span>input.mp4<span class="w"> </span>-map<span class="w"> </span><span class="m">0</span>:v<span class="w"> </span>-f<span class="w"> </span>md5<span class="w"> </span>-
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-loglevel<span class="w"> </span>quiet<span class="w"> </span>-pattern_type<span class="w"> </span>glob<span class="w"> </span>-i<span class="w"> </span>output_file-*.png<span class="w"> </span>-map<span class="w"> </span><span class="m">0</span>:v<span class="w"> </span>-f<span class="w"> </span>md5<span class="w"> </span>-
+<p>Individually excluding other streams:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg<span class="w"> </span>-loglevel<span class="w"> </span>quiet<span class="w"> </span>-i<span class="w"> </span>input.mp4<span class="w"> </span>-an<span class="w"> </span>-dn<span class="w"> </span>-sn<span class="w"> </span>-f<span class="w"> </span>md5<span class="w"> </span>-
 </pre></div>
 </div>
 </section>
@@ -110,6 +116,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="using_ffprobe.html" class="btn btn-neutral float-left" title="13. Using FFprobe" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="generate_spectrograms.html" class="btn btn-neutral float-right" title="15. Spectrograms" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -1,11 +1,11 @@
 ##########################
-5. Verifying Installation
+Verifying Installation
 ##########################
 
 To verify that FFmpeg is working as expected, we'll run a couple of simple commands to check that we can successfully call the program and look at what those commands tell us.
 
 ********************************************
-5.1. Checking the Version
+Checking the Version
 ********************************************
 
 - Let's start by checking the version of FFmpeg we have installed.
@@ -29,7 +29,7 @@ To verify that FFmpeg is working as expected, we'll run a couple of simple comma
 - For example, if we look at the output, we can see that ``--enable-libsoxr`` is listed in my configuration section. This means that FFmpeg can use the SoX Resampler library for audio.
 
 ********************************************
-5.2. Bringing Up the Help Text
+Bringing Up the Help Text
 ********************************************
 
 - Next let's bring up the help text for FFmpeg:
@@ -43,7 +43,7 @@ To verify that FFmpeg is working as expected, we'll run a couple of simple comma
 - In addition to the ``-help`` command, we also used the ``-hide_banner`` command here. This is one of several commands that impacts the amount of information that FFmpeg outputs to the command line. In this case, the command simply keeps FFmpeg from printing the version and configuration information at the top of its output.
 
 ********************************************
-5.3. Reading the Manual (MacOS/Linux ONLY)
+Reading the Manual (MacOS/Linux ONLY)
 ********************************************
 
 - Finally, lets bring up the manual for FFmpeg:

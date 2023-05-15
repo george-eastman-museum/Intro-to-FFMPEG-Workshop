@@ -68,14 +68,15 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="verifying_installation.html">5. Verifying Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ffmpeg_basics.html">6. FFmpeg Basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="make_a_test_video.html">7. Make a Test Video</a></li>
-<li class="toctree-l1"><a class="reference internal" href="copying_streams.html">8. Copying Streams and Editing Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generating_files.html">7. Generating Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="copying_streams.html">8. Stream Mapping and Editing Metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cutting_and_combining.html">9. Cutting and Combining Video</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pad_and_crop.html">10. Pad, Crop, and Scale Videos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="extract_frames.html">11. Extracting Frames and Streams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="image_sequences.html">12. Image Sequences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using_ffprobe.html">13. Using FFprobe</a></li>
 <li class="toctree-l1"><a class="reference internal" href="frame_and_stream_md5s.html">14. Frame and Stream MD5s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generate_spectrograms.html">15. Spectrograms</a></li>
 </ul>
 
         </div>
@@ -92,7 +93,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">4. Installing FFmpeg</li>
+      <li class="breadcrumb-item active"><span class="section-number">4. </span>Installing FFmpeg</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/jycm205/Intro-to-FFMPEG-Workshop/blob/main/docsrc/source/installation.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -103,12 +104,12 @@
            <div itemprop="articleBody">
              
   <section id="installing-ffmpeg">
-<h1>4. Installing FFmpeg<a class="headerlink" href="#installing-ffmpeg" title="Permalink to this heading"></a></h1>
+<h1><span class="section-number">4. </span>Installing FFmpeg<a class="headerlink" href="#installing-ffmpeg" title="Permalink to this heading"></a></h1>
 <p>For the most up-to-date instructions on how to install FFmpeg on your operating system, you should check the <a class="reference external" href="https://ffmpeg.org/download.html">FFmpeg Official Website</a>.</p>
 <section id="windows">
-<h2>4.1. Windows<a class="headerlink" href="#windows" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.1. </span>Windows<a class="headerlink" href="#windows" title="Permalink to this heading"></a></h2>
 <section id="downloading">
-<h3>4.1.1. Downloading<a class="headerlink" href="#downloading" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">4.1.1. </span>Downloading<a class="headerlink" href="#downloading" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>The current builds for Windows are provided by gyan.dev.</p></li>
 <li><p>Follow the link from <a class="reference external" href="https://ffmpeg.org/download.html#build-windows">FFmpeg’s Downloads page</a>.</p></li>
@@ -124,7 +125,7 @@
 </ul>
 </section>
 <section id="adding-ffmpeg-to-path">
-<h3>4.1.2. Adding FFmpeg to Path<a class="headerlink" href="#adding-ffmpeg-to-path" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">4.1.2. </span>Adding FFmpeg to Path<a class="headerlink" href="#adding-ffmpeg-to-path" title="Permalink to this heading"></a></h3>
 <p>In order for FFmpeg to be easily callable by simply typing <code class="docutils literal notranslate"><span class="pre">ffmpeg</span></code> into the command line, we’ll need to add it to the “Path” for your username.</p>
 <ul class="simple">
 <li><p>Start by placing the contents of the FFmpeg bin folder in an easy to remember location, such as a dedicated “Applications” folder in your “C” drive.</p></li>
@@ -154,12 +155,12 @@
 </section>
 </section>
 <section id="mac">
-<h2>4.2. Mac<a class="headerlink" href="#mac" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.2. </span>Mac<a class="headerlink" href="#mac" title="Permalink to this heading"></a></h2>
 <p>There are several options for installing FFmpeg on Mac computers</p>
 <section id="option-1-install-a-static-build">
-<h3>4.2.1. Option 1 - Install a Static Build<a class="headerlink" href="#option-1-install-a-static-build" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">4.2.1. </span>Option 1 - Install a Static Build<a class="headerlink" href="#option-1-install-a-static-build" title="Permalink to this heading"></a></h3>
 <section id="id1">
-<h4>4.2.1.1. Downloading<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h4>
+<h4><span class="section-number">4.2.1.1. </span>Downloading<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h4>
 <ul class="simple">
 <li><p>Follow the Static Build Download link from the <a class="reference external" href="https://ffmpeg.org/download.html#build-mac">FFmpeg website</a>.</p></li>
 <li><p>This will take you to a new page where you can download FFmpeg, FFprobe, and FFplay separately.</p></li>
@@ -176,7 +177,7 @@
 </ul>
 </section>
 <section id="id2">
-<h4>4.2.1.2. Adding FFmpeg to Path<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h4>
+<h4><span class="section-number">4.2.1.2. </span>Adding FFmpeg to Path<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h4>
 <ul class="simple">
 <li><p>Start by opening your “Applications” folder, navigating to the “Utilities” folder, and opening the Terminal application.</p></li>
 <li><p>In the Terminal, run the following command (copy and paste the command, then press Enter/Return) to change directories to your Downloads folder where the “ffmpeg”, “ffprobe”, and “ffplay” files are located.</p></li>
@@ -185,7 +186,7 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>At this point, you can verify that you’re in the right location by running the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command as described in Section 2.2.3. When trying to run the command you may get a prompt asking if you want to allow Terminal to access your downloads folder. Select “Yes” and the command will run. You should see the FFmpeg files that you downloaded and extracted listed in the output if you are in the right location.</p></li>
+<li><p>At this point, you can verify that you’re in the right location by running the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command as described in Section 3.1.4. When trying to run the command you may get a prompt asking if you want to allow Terminal to access your downloads folder. Select “Yes” and the command will run. You should see the FFmpeg files that you downloaded and extracted listed in the output if you are in the right location.</p></li>
 <li><p>Now that you are sure you are in the right directory, it’s time to make the folder “/usr/local/bin” so that we’ll be able to move our files there. Run the following command:</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/usr/local/bin/
@@ -210,7 +211,7 @@
 </ul>
 </section>
 <section id="uninstalling">
-<h4>4.2.1.3. Uninstalling<a class="headerlink" href="#uninstalling" title="Permalink to this heading"></a></h4>
+<h4><span class="section-number">4.2.1.3. </span>Uninstalling<a class="headerlink" href="#uninstalling" title="Permalink to this heading"></a></h4>
 <ul class="simple">
 <li><p>To uninstall the FFmpeg files, you simply need to delete the files from the folder we put them in.</p></li>
 <li><p>Start by opening a Terminal window and changing directories to “/usr/local/bin”.</p></li>
@@ -235,7 +236,7 @@ sudo<span class="w"> </span>rm<span class="w"> </span>ffplay
 </section>
 </section>
 <section id="option-2-use-a-package-manager">
-<h3>4.2.2. Option 2 - Use a Package Manager<a class="headerlink" href="#option-2-use-a-package-manager" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">4.2.2. </span>Option 2 - Use a Package Manager<a class="headerlink" href="#option-2-use-a-package-manager" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>For an experience similar to Linux you can use a third party package manager for Macs like <a class="reference external" href="https://brew.sh/">Homebrew</a> or <a class="reference external" href="https://www.macports.org/">MacPorts</a>.</p></li>
 <li><p>Further information on this process can be found <a class="reference external" href="https://trac.ffmpeg.org/wiki/CompilationGuide/macOS">HERE</a>.</p></li>
@@ -243,7 +244,7 @@ sudo<span class="w"> </span>rm<span class="w"> </span>ffplay
 </section>
 </section>
 <section id="linux">
-<h2>4.3. Linux<a class="headerlink" href="#linux" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.3. </span>Linux<a class="headerlink" href="#linux" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>FFmpeg can be installed using your operating system’s package manager in most cases.</p></li>
 <li><p>On some Linux distributions, you may need to enable non-free repositories before you can install FFmpeg.</p></li>
@@ -252,7 +253,7 @@ sudo<span class="w"> </span>rm<span class="w"> </span>ffplay
 </ul>
 </section>
 <section id="chromeos">
-<h2>4.4. ChromeOS<a class="headerlink" href="#chromeos" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.4. </span>ChromeOS<a class="headerlink" href="#chromeos" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>NOTE - NEED TO TEST</p></li>
 <li><p>ChromeOS is based on Linux and should, in theory, be able to install FFmpeg using a .deb file</p></li>
