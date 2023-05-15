@@ -5,7 +5,7 @@ Documentation for class on using FFmpeg. The website can be accessed [HERE](http
 
 ### HTML
 - Install [Sphinx](http://www.writethedocs.org/guide/tools/sphinx/).
-- Install the `sphinx-rtd-theme` and `sphinx_tabs` extension.
+- Install the `sphinx-rtd-theme` and `sphinx-copybutton` and `sphinx_tabs` extensions.
 - `cd` into the "docsrc" folder.
 - Run `make html` to create the html builds in the "build/html" directory.
 - `make clean` will remove all files from the "build" directory.
