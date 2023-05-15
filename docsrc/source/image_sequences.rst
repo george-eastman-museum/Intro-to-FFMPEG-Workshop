@@ -1,7 +1,31 @@
 ########################
-12. Image Sequences
+Image Sequences
 ########################
 
-Make a video out of 1 frame:
-ffmpeg -loop 1 -i image.png -c:v libx264 -t 15 -pix_fmt yuv420p -vf scale=320:240 out.mp4
-Set -t to however many seconds you want the clip to be.  Set scale to the dimensions of the video it needs to match.
+******************************
+Loop a Single Frame
+******************************
+
+.. code-block:: bash
+
+   ffmpeg -framerate 24 -loop 1 -i input.png -t 10 -c:v libx264 -pix_fmt yuv420p output.mp4
+
+This can be tested using the image below:
+
+.. image:: /images/ffmpeg_example_file.png
+
+******************************
+Image Sequence to Video
+******************************
+
+Method 1:
+
+.. code-block:: bash
+
+   ffmpeg -framerate 24 -pattern_type glob -i *.png -c:v libx264 -pix_fmt yuv420p output.mp4
+
+Method 2: 
+
+.. code-block:: bash
+
+   ffmpeg -framerate 24 -i %06d.png -c:v libx264 -pix_fmt yuv420p output.mp4

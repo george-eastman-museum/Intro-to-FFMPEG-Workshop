@@ -7,6 +7,7 @@ Intro to FFMPEG Workshop
 =================================================
 
 .. toctree::
+   :numbered:
    :maxdepth: 2
    :caption: Contents:
    
@@ -16,7 +17,7 @@ Intro to FFMPEG Workshop
    installation
    verifying_installation
    ffmpeg_basics
-   make_a_test_video
+   generating_files
    copying_streams
    cutting_and_combining
    pad_and_crop
@@ -24,6 +25,7 @@ Intro to FFMPEG Workshop
    image_sequences
    using_ffprobe
    frame_and_stream_md5s
+   generate_spectrograms
 
 
 

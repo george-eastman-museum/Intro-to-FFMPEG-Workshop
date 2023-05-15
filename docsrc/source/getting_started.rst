@@ -1,17 +1,17 @@
 ######################################
-2. Getting Started - The Command Line
+Getting Started - The Command Line
 ######################################
 
 Different operating systems will have different default applications for accessing the command line. These applications might be referred to using terms like "terminal", "shell", or "command line interpreter". They allow you to interact with a computer using an interface where you type in strings of text in order to execute commands. Different command line interpreters may 
 
 ********************************
-2.1. Accessing the Command Line
+Accessing the Command Line
 ********************************
 
-2.1.1. Windows
+Windows
 ========================================
 
-2.1.1.1. Command Prompt
+Command Prompt
 ------------------------
 
 .. image:: images/locate_terminal-windows0.png
@@ -20,7 +20,7 @@ Command prompt (CMD) is the basic command line interpreter for Windows computers
 
 - To open a Command Prompt window, search for "CMD" in the Start Menu.
 
-2.1.1.2. Powershell
+Powershell
 ------------------------
 
 .. image:: images/locate_terminal-windows1.png
@@ -29,10 +29,10 @@ PowerShell is a newer program for interacting with the command line on Windows s
 
 - To open a PowerShell window, search for "powershell" in the Start Menu.
 
-2.1.2. Mac
+Mac
 ========================================
 
-2.1.2.1. Terminal
+Terminal
 ------------------------
 
 The default application for interacting with the command line on Macs is called Terminal. It is similar in many ways to the default command line interpreter on many Linux distros, although some commands will still vary between the two.
@@ -47,10 +47,10 @@ The default application for interacting with the command line on Macs is called 
 
 .. image:: images/locate_terminal-mac1.png
 
-2.1.3. Linux
+Linux
 ========================================
 
-2.1.3.1. Terminal
+Terminal
 ------------------------
 
 .. image:: images/locate_terminal-linux0.png
@@ -59,10 +59,10 @@ The name of your default terminal application may vary depending on the distribu
 
 
 ********************************
-2.2. What Am I Looking At?
+What Am I Looking At?
 ********************************
 
-2.2.1. Mac/Linux
+Mac/Linux
 ========================================
 
 When you first open the command line, you will see something that looks similar to this on a Mac or Linux computer:
@@ -78,7 +78,7 @@ The terminal gives us a few pieces of information:
 - The ``$`` (or ``%`` on Mac computers) indicates that everything after that will be commands that we type.
 
 
-2.2.2. Windows
+Windows
 ========================================
 
 On a Windows computer, the Command Prompt window will look something like this:

@@ -1,14 +1,14 @@
 ####################
-4. Installing FFmpeg
+Installing FFmpeg
 ####################
 
 For the most up-to-date instructions on how to install FFmpeg on your operating system, you should check the `FFmpeg Official Website <https://ffmpeg.org/download.html>`_.
 
 ************
-4.1. Windows
+Windows
 ************
 
-4.1.1. Downloading
+Downloading
 =============================
 - The current builds for Windows are provided by gyan.dev.
 
@@ -28,7 +28,7 @@ For the most up-to-date instructions on how to install FFmpeg on your operating 
 
 - For now, if you want to run FFmpeg, you'll either need to drag and drop the "ffmpeg" file in the "bin" folder onto the command line or use the command line to navigate to the "bin" folder and run FFmpeg commands from there.
 
-4.1.2. Adding FFmpeg to Path
+Adding FFmpeg to Path
 =============================
 
 In order for FFmpeg to be easily callable by simply typing ``ffmpeg`` into the command line, we'll need to add it to the "Path" for your username.
@@ -64,14 +64,14 @@ In order for FFmpeg to be easily callable by simply typing ``ffmpeg`` into the c
 - To verify that the installation works, continue on to :doc:`section 5 <verifying_installation>`.
 
 ************
-4.2. Mac
+Mac
 ************
 There are several options for installing FFmpeg on Mac computers
 
-4.2.1. Option 1 - Install a Static Build
+Option 1 - Install a Static Build
 ==========================================
 
-4.2.1.1. Downloading
+Downloading
 --------------------------------
 
 - Follow the Static Build Download link from the `FFmpeg website <https://ffmpeg.org/download.html#build-mac>`_.
@@ -90,7 +90,7 @@ There are several options for installing FFmpeg on Mac computers
 
 - You should now have an "ffmpeg", "ffprobe", and "ffplay" file in your downloads folder. You can drag and drop these files into a Terminal window as is to run them, but if we want them to be easily accessible on the command line they'll need to be added to your $PATH.
 
-4.2.1.2. Adding FFmpeg to Path
+Adding FFmpeg to Path
 -------------------------------
 
 - Start by opening your "Applications" folder, navigating to the "Utilities" folder, and opening the Terminal application.
@@ -101,7 +101,7 @@ There are several options for installing FFmpeg on Mac computers
 
    cd ~/Downloads/
 
-- At this point, you can verify that you're in the right location by running the ``ls`` command as described in Section 2.2.3. When trying to run the command you may get a prompt asking if you want to allow Terminal to access your downloads folder. Select "Yes" and the command will run. You should see the FFmpeg files that you downloaded and extracted listed in the output if you are in the right location.
+- At this point, you can verify that you're in the right location by running the ``ls`` command as described in Section 3.1.4. When trying to run the command you may get a prompt asking if you want to allow Terminal to access your downloads folder. Select "Yes" and the command will run. You should see the FFmpeg files that you downloaded and extracted listed in the output if you are in the right location.
 
 - Now that you are sure you are in the right directory, it's time to make the folder "/usr/local/bin" so that we'll be able to move our files there. Run the following command:
 
@@ -127,7 +127,7 @@ There are several options for installing FFmpeg on Mac computers
 
 - To verify that the installation works, continue on to :doc:`section 5 <verifying_installation>`.
 
-4.2.1.3. Uninstalling
+Uninstalling
 -------------------------------
 
 - To uninstall the FFmpeg files, you simply need to delete the files from the folder we put them in.
@@ -153,14 +153,14 @@ There are several options for installing FFmpeg on Mac computers
    sudo rm ffprobe
    sudo rm ffplay
 
-4.2.2. Option 2 - Use a Package Manager
+Option 2 - Use a Package Manager
 ==========================================
 - For an experience similar to Linux you can use a third party package manager for Macs like `Homebrew <https://brew.sh/>`_ or `MacPorts <https://www.macports.org/>`_.
 
 - Further information on this process can be found `HERE <https://trac.ffmpeg.org/wiki/CompilationGuide/macOS>`_.
 
 ************
-4.3. Linux
+Linux
 ************
 - FFmpeg can be installed using your operating system's package manager in most cases.
 
@@ -171,7 +171,7 @@ There are several options for installing FFmpeg on Mac computers
 - To verify that the installation works, continue on to :doc:`section 5 <verifying_installation>`.
 
 **************
-4.4. ChromeOS
+ChromeOS
 **************
 - NOTE - NEED TO TEST
 
