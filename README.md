@@ -1,5 +1,5 @@
 # Intro-to-FFMPEG-Workshop
-Documentation for class on using FFmpeg. The website can be accessed [HERE](https://jycm205.github.io/Intro-to-FFMPEG-Workshop/)
+Documentation for class on using FFmpeg. The website can be accessed [HERE](https://george-eastman-museum.github.io/Intro-to-FFMPEG-Workshop/)
 
 ## Building the docs
 
