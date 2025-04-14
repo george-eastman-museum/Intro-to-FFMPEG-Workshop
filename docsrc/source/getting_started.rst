@@ -2,7 +2,7 @@
 Getting Started - The Command Line
 ######################################
 
-Different operating systems will have different default applications for accessing the command line. These applications might be referred to using terms like "terminal", "shell", or "command line interpreter". They allow you to interact with a computer using an interface where you type in strings of text in order to execute commands. Different command line interpreters may 
+Different operating systems will have different default applications for accessing the command line. These applications might be referred to using terms like "terminal", "shell", "command prompt", or generically using the term "command line interface" (CLI). They allow you to interact with a computer using an interface where you type in strings of text in order to execute commands. This contrasts with a graphical user interface (GUI) where you are able to interact with a computer using an interface composed of buttons, menus, icons, and other visual elements.
 
 ********************************
 Accessing the Command Line
