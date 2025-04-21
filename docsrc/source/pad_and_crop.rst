@@ -39,7 +39,7 @@ Downscale and Maintain Aspect Ratio
 
 .. code-block:: bash
 
-   ffmpeg -i input.mp4 -vf scale="trunc(oh*a/2)*2:720" output.mp4
+   ffmpeg -i input.mp4 -vf scale="trunc(oh*a/2):720" output.mp4
 
 Scale and Pad
 ============================================
